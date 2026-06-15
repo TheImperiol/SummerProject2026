@@ -1,8 +1,23 @@
 {
     "java.project.sourcePaths": ["src"],
     "java.project.outputPath": "bin",
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "c:\\jdk-26.0.1\\lib\\jrt-fs.jar"
-    ]
+    "java.project.referencedLibraries": {
+        "include": [
+            "lib/**/*.jar",
+            "c:\\Program Files\\Microsoft\\jdk-25.0.3.9-hotspot\\javafx-sdk-26.0.1\\lib\\javafx.base.jar",
+            "c:\\Program Files\\Microsoft\\jdk-25.0.3.9-hotspot\\javafx-sdk-26.0.1\\lib\\javafx.controls.jar",
+            "c:\\Program Files\\Microsoft\\jdk-25.0.3.9-hotspot\\javafx-sdk-26.0.1\\lib\\javafx.fxml.jar",
+            "c:\\Program Files\\Microsoft\\jdk-25.0.3.9-hotspot\\javafx-sdk-26.0.1\\lib\\javafx.graphics.jar",
+            "c:\\Program Files\\Microsoft\\jdk-25.0.3.9-hotspot\\javafx-sdk-26.0.1\\lib\\javafx.media.jar",
+            "c:\\Program Files\\Microsoft\\jdk-25.0.3.9-hotspot\\javafx-sdk-26.0.1\\lib\\javafx.swing.jar",
+            "c:\\Program Files\\Microsoft\\jdk-25.0.3.9-hotspot\\javafx-sdk-26.0.1\\lib\\javafx.web.jar",
+            "c:\\Program Files\\Microsoft\\jdk-25.0.3.9-hotspot\\javafx-sdk-26.0.1\\lib\\javafx-swt.jar",
+            "c:\\Program Files\\Microsoft\\jdk-25.0.3.9-hotspot\\javafx-sdk-26.0.1\\lib\\jdk.jsobject.jar",
+            "c:\\Program Files\\Microsoft\\jdk-25.0.3.9-hotspot\\javafx-sdk-26.0.1\\lib\\jfx.incubator.input.jar",
+            "c:\\Program Files\\Microsoft\\jdk-25.0.3.9-hotspot\\javafx-sdk-26.0.1\\lib\\jfx.incubator.richtext.jar"
+        ],
+        "exclude": [
+            "c:\\jdk-26.0.1\\javafx-sdk-26.0.1\\lib\\javafx-swt.jar"
+        ]
+    }
 }
