@@ -21,11 +21,16 @@ public class MainSummerApp extends Application{
         VBox vBox = new VBox();
         GridPane gpMain = new GridPane();
         GridPane gpSidebar = new GridPane();
+        GridPane gpSidebarContent = new GridPane();
+        GridPane gpEmulator = new GridPane();
+        GridPane gpSettings = new GridPane();
         Separator sep = new Separator();
 
+        gpSettings.setGridLinesVisible(true);
         gpMain.setGridLinesVisible(true);
-
+        gpEmulator.setGridLinesVisible(true);
         gpSidebar.setGridLinesVisible(true);
+        gpSidebarContent.setGridLinesVisible(true);
 
         ColumnConstraints mainColumnSidebar = new ColumnConstraints();
         mainColumnSidebar.setPercentWidth(20);
@@ -39,10 +44,13 @@ public class MainSummerApp extends Application{
         ColumnConstraints sidebarColumnScripts = new ColumnConstraints();
         sidebarColumnScripts.setPercentWidth(34);
 
+        ColumnConstraints sidebarColumnFilling = new ColumnConstraints();
+        sidebarColumnFilling.setPercentWidth(100);
+
         RowConstraints mainRowSettings = new RowConstraints();
-        mainRowSettings.setPercentHeight(10);
+        mainRowSettings.setPercentHeight(5);
         RowConstraints mainRowContents = new RowConstraints();
-        mainRowContents.setPercentHeight(70);
+        mainRowContents.setPercentHeight(75);
         RowConstraints mainRowTerminal = new RowConstraints();
         mainRowTerminal.setPercentHeight(20);
 
@@ -51,19 +59,34 @@ public class MainSummerApp extends Application{
         RowConstraints sidebarRowContent = new RowConstraints();
         sidebarRowContent.setPercentHeight(95);
 
-        gpMain.getColumnConstraints().addAll(mainColumnSidebar, mainColumnEmulator);
-        gpMain.getRowConstraints().addAll(mainRowSettings, mainRowContents, mainRowTerminal);
+        RowConstraints sidebarRowFilling = new RowConstraints();
+        sidebarRowFilling.setPercentHeight(100);
 
-        gpSidebar.getColumnConstraints().addAll(sidebarColumnDevices, sidebarColumnComponents, sidebarColumnScripts);
-        gpSidebar.getRowConstraints().addAll(sidebarRowTabs, sidebarRowContent);
+        gpSettings.getRowConstraints().add(mainRowSettings);
+        gpSettings.getColumnConstraints().add(sidebarColumnFilling);
+
+        gpMain.getColumnConstraints().addAll(mainColumnSidebar, mainColumnEmulator);
+        gpMain.getRowConstraints().addAll(sidebarRowFilling);
+
+        gpSidebarContent.getColumnConstraints().addAll(sidebarColumnDevices, sidebarColumnComponents, sidebarColumnScripts);
+        gpSidebarContent.getRowConstraints().add(sidebarRowFilling);
+
+        gpEmulator.getColumnConstraints().add(sidebarColumnFilling);
+        gpEmulator.getRowConstraints().addAll(mainRowSettings,mainRowContents,mainRowTerminal);
+
+        gpSidebar.getColumnConstraints().add(sidebarColumnFilling);
+        gpSidebar.getRowConstraints().addAll(mainRowSettings);
 
         VBox.setVgrow(gpMain, Priority.ALWAYS );
 
-        Label lblTitle = new Label("Hello World");
         
-        gpMain.add(lblTitle,1,1);
+        
 
-        gpMain.add(gpSidebar,0,1);
+        //gpSidebar.add(gpSidebarContent,0,0);
+
+        gpMain.add(gpSidebar,0,0);
+
+        gpMain.add(gpEmulator, 1, 0);
 
         vBox.getChildren().addAll(gpMain,sep);
 
