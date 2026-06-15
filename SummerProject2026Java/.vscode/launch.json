@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "MainSummerApp",
+            "request": "launch",
+            "mainClass": "ApplicationFX.MainSummerApp",
+            "projectName": "SummerProject2026Java_f7190c7f",
+            "vmArgs": "--module-path \"C:/Program Files/Microsoft/jdk-25.0.3.9-hotspot/javafx-sdk-26.0.1/lib\" --add-modules javafx.controls,javafx.fxml --enable-native-access=javafx.graphics"
+
+        },
+        {
+            "type": "java",
+            "name": "Launch JavaFX",
+            "request": "launch",
+            "mainClass": "Main",
+            "vmArgs": "--module-path \"C:/Program Files/Microsoft/jdk-25.0.3.9-hotspot/javafx-sdk-26.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
+        }
+    ]
+}
