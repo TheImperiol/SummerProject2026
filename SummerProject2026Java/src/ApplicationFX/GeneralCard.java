@@ -1,14 +1,24 @@
 package ApplicationFX;
 
 import javafx.scene.layout.HBox;
-import javafx.scene.control.*;
 
-public class GeneralCard extends HBox{
-    String title;
-    Label cardLabel;
-    public GeneralCard() {
-        title = "General card";
-        cardLabel = new Label(title);
-        this.getChildren().add(cardLabel);
+public abstract class GeneralCard extends HBox{
+    protected String cardTitle;
+    protected String cardDescription;
+
+    public String GetCardTitle(){
+        return cardTitle;
+    }
+
+    public void SetCardTitle(String title){
+        cardTitle = title;
+    }
+
+     public String GetCardDescription(){
+        return cardDescription;
+    }
+
+    public void SetCardDescription(String description){
+        cardDescription = description;
     }
 }

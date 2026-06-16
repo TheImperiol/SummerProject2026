@@ -76,7 +76,9 @@ public class MainSummerApp extends Application{
         gpMain.add(gpEmulator, 1, 0);
         gpSettings.add(gpMain,0,1);
 
-        
+        ScriptCard card = new ScriptCard(0.987f, 8.78f);
+
+        gpEmulator.add(card,0,0);
 
         vBox.getChildren().addAll(gpSettings,sep);
 
