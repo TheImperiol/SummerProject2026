@@ -36,56 +36,43 @@ public class MainSummerApp extends Application{
         mainColumnSidebar.setPercentWidth(20);
         ColumnConstraints mainColumnEmulator = new ColumnConstraints();
         mainColumnEmulator.setPercentWidth(80);
-
         ColumnConstraints sidebarColumnDevices = new ColumnConstraints();
         sidebarColumnDevices.setPercentWidth(33);
         ColumnConstraints sidebarColumnComponents = new ColumnConstraints();
         sidebarColumnComponents.setPercentWidth(33);
         ColumnConstraints sidebarColumnScripts = new ColumnConstraints();
         sidebarColumnScripts.setPercentWidth(34);
-
         ColumnConstraints sidebarColumnFilling = new ColumnConstraints();
         sidebarColumnFilling.setPercentWidth(100);
-
+        
         RowConstraints mainRowSettings = new RowConstraints();
         mainRowSettings.setPercentHeight(5);
         RowConstraints mainRowContents = new RowConstraints();
         mainRowContents.setPercentHeight(80);
         RowConstraints mainRowTerminal = new RowConstraints();
         mainRowTerminal.setPercentHeight(20);
-
         RowConstraints sidebarRowTabs = new RowConstraints();
         sidebarRowTabs.setPercentHeight(5);
         RowConstraints sidebarRowContent = new RowConstraints();
         sidebarRowContent.setPercentHeight(95);
-
         RowConstraints sidebarRowFilling = new RowConstraints();
         sidebarRowFilling.setPercentHeight(100);
 
         gpSettings.getRowConstraints().addAll(mainRowSettings, sidebarRowContent);
         gpSettings.getColumnConstraints().add(sidebarColumnFilling);
-
         gpMain.getColumnConstraints().addAll(mainColumnSidebar, mainColumnEmulator);
         gpMain.getRowConstraints().addAll(sidebarRowFilling);
-
         gpSidebarContent.getColumnConstraints().addAll(sidebarColumnDevices, sidebarColumnComponents, sidebarColumnScripts);
         gpSidebarContent.getRowConstraints().add(sidebarRowFilling);
-
         gpEmulator.getColumnConstraints().add(sidebarColumnFilling);
         gpEmulator.getRowConstraints().addAll(mainRowContents,mainRowTerminal);
-
         gpSidebar.getColumnConstraints().add(sidebarColumnFilling);
         gpSidebar.getRowConstraints().addAll(mainRowSettings);
 
         VBox.setVgrow(gpSettings, Priority.ALWAYS );
 
-        
-        
-
         gpSidebar.add(gpSidebarContent,0,0);
-
         gpMain.add(gpSidebar,0,0);
-
         gpMain.add(gpEmulator, 1, 0);
         gpSettings.add(gpMain,0,1);
 
