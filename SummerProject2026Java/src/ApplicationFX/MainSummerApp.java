@@ -50,7 +50,7 @@ public class MainSummerApp extends Application{
         RowConstraints mainRowSettings = new RowConstraints();
         mainRowSettings.setPercentHeight(5);
         RowConstraints mainRowContents = new RowConstraints();
-        mainRowContents.setPercentHeight(75);
+        mainRowContents.setPercentHeight(80);
         RowConstraints mainRowTerminal = new RowConstraints();
         mainRowTerminal.setPercentHeight(20);
 
@@ -62,7 +62,7 @@ public class MainSummerApp extends Application{
         RowConstraints sidebarRowFilling = new RowConstraints();
         sidebarRowFilling.setPercentHeight(100);
 
-        gpSettings.getRowConstraints().add(mainRowSettings);
+        gpSettings.getRowConstraints().addAll(mainRowSettings, sidebarRowContent);
         gpSettings.getColumnConstraints().add(sidebarColumnFilling);
 
         gpMain.getColumnConstraints().addAll(mainColumnSidebar, mainColumnEmulator);
@@ -72,23 +72,24 @@ public class MainSummerApp extends Application{
         gpSidebarContent.getRowConstraints().add(sidebarRowFilling);
 
         gpEmulator.getColumnConstraints().add(sidebarColumnFilling);
-        gpEmulator.getRowConstraints().addAll(mainRowSettings,mainRowContents,mainRowTerminal);
+        gpEmulator.getRowConstraints().addAll(mainRowContents,mainRowTerminal);
 
         gpSidebar.getColumnConstraints().add(sidebarColumnFilling);
         gpSidebar.getRowConstraints().addAll(mainRowSettings);
 
-        VBox.setVgrow(gpMain, Priority.ALWAYS );
+        VBox.setVgrow(gpSettings, Priority.ALWAYS );
 
         
         
 
-        //gpSidebar.add(gpSidebarContent,0,0);
+        gpSidebar.add(gpSidebarContent,0,0);
 
         gpMain.add(gpSidebar,0,0);
 
         gpMain.add(gpEmulator, 1, 0);
+        gpSettings.add(gpMain,0,1);
 
-        vBox.getChildren().addAll(gpMain,sep);
+        vBox.getChildren().addAll(gpSettings,sep);
 
         Scene mainScene = new Scene(vBox);
         stage.setScene(mainScene);
