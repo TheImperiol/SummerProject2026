@@ -76,6 +76,8 @@ public class MainSummerApp extends Application{
         gpMain.add(gpEmulator, 1, 0);
         gpSettings.add(gpMain,0,1);
 
+        
+
         vBox.getChildren().addAll(gpSettings,sep);
 
         Scene mainScene = new Scene(vBox);
