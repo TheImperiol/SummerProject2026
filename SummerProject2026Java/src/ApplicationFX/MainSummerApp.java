@@ -17,10 +17,8 @@ public class MainSummerApp extends Application{
         Separator sep = new Separator();
         VBox.setVgrow(frontend.gpAppTopBar, Priority.ALWAYS );
 
-
-        //ScriptCard card = new ScriptCard(0.987f, 8.78f);
-
-        //gpEmulator.add(card,0,0);
+        ScriptCard card = new ScriptCard(0.987f, 8.78f);
+        frontend.gpEmulator.add(card, 0, 0);
 
         vBox.getChildren().addAll(frontend.gpAppTopBar,sep);
 

@@ -1,11 +1,11 @@
 package ApplicationFX;
 
-import javafx.scene.layout.HBox;
+//import javafx.scene.control.*;
+import javafx.scene.layout.*;
 
-public abstract class GeneralCard extends HBox{
+public abstract class GeneralCard extends VBox{
     protected String cardTitle;
     protected String cardDescription;
-
     public String GetCardTitle(){
         return cardTitle;
     }
@@ -21,4 +21,10 @@ public abstract class GeneralCard extends HBox{
     public void SetCardDescription(String description){
         cardDescription = description;
     }
+
+    public GeneralCard(){
+     
+    }
+
+    
 }

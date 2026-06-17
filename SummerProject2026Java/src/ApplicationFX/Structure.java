@@ -4,11 +4,15 @@ import javafx.scene.layout.*;
 
 public class Structure extends GridPane {
     GridPane gpAppTopBar;
+    GridPane gpMain;
+    GridPane gpSidebar;
+    GridPane gpSidebarContent;
+    GridPane gpEmulator;
     public Structure(){
-        GridPane gpMain = new GridPane();
-        GridPane gpSidebar = new GridPane();
-        GridPane gpSidebarContent = new GridPane();
-        GridPane gpEmulator = new GridPane();
+        gpMain = new GridPane();
+        gpSidebar = new GridPane();
+        gpSidebarContent = new GridPane();
+        gpEmulator = new GridPane();
         gpAppTopBar = new GridPane();
 
         gpAppTopBar.setGridLinesVisible(true);
@@ -53,6 +57,7 @@ public class Structure extends GridPane {
         gpEmulator.getRowConstraints().addAll(mainRowContents,mainRowTerminal);
         gpSidebar.getColumnConstraints().add(sidebarColumnFilling);
         gpSidebar.getRowConstraints().addAll(mainRowSettings);
+        
         gpSidebar.add(gpSidebarContent,0,0);
         gpMain.add(gpSidebar,0,0);
         gpMain.add(gpEmulator, 1, 0);
