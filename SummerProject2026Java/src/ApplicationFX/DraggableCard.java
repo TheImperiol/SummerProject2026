@@ -18,4 +18,9 @@ public abstract class DraggableCard extends GeneralCard{
     public void SetY(float y){
         position[1] = y;
     }
+    public DraggableCard(float x, float y){
+        super();
+        SetX(x);
+        SetY(y);
+    }
 }
