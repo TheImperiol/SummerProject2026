@@ -7,6 +7,8 @@ public class ScriptCard extends DraggableCard {
         SetX(x);
         SetY(y);
         Label test = new Label(Float.toString(GetX()));
-        this.getChildren().add(test);
+        Label test2 = new Label(Float.toString(GetY()));
+
+        this.getChildren().addAll(test,test2);
     }
 }
