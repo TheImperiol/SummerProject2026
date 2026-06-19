@@ -22,5 +22,14 @@ public abstract class DraggableCard extends GeneralCard{
         super();
         SetX(x);
         SetY(y);
+
+        this.setOnDragDropped(event -> {
+            System.out.println("Stopped dragging");
+        });
+        this.setOnDragDetected(event -> {
+            System.out.println("Dragged");
+        });
+
+        
     }
 }
