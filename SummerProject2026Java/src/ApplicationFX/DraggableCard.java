@@ -1,5 +1,9 @@
 package ApplicationFX;
 
+import javafx.event.EventHandler;
+import javafx.scene.input.*;
+
+
 public abstract class DraggableCard extends GeneralCard{
     protected float[] position = new float[2];
 
@@ -23,11 +27,19 @@ public abstract class DraggableCard extends GeneralCard{
         SetX(x);
         SetY(y);
 
-        this.setOnDragDropped(event -> {
+        this.setOnDragDropped(( DragEvent event) -> {
             System.out.println("Stopped dragging");
+            event.setDropCompleted(true);
+            event.consume();
         });
-        this.setOnDragDetected(event -> {
-            System.out.println("Dragged");
+        this.setOnDragDetected(new EventHandler<MouseEvent>() {
+            @Override public void handle(MouseEvent event) {
+                Dragboard db = startDragAndDrop(TransferMode.ANY);
+                ClipboardContent content = new ClipboardContent();
+                content.putString("Hello!");
+                db.setContent(content);
+                event.consume();
+            }
         });
 
         
