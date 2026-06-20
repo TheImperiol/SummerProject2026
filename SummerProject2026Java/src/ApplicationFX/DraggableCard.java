@@ -27,15 +27,13 @@ public abstract class DraggableCard extends GeneralCard{
         SetX(x);
         SetY(y);
 
-        this.setOnDragDropped(( DragEvent event) -> {
-            System.out.println("Stopped dragging");
-            event.setDropCompleted(true);
-            event.consume();
-        });
+        
+
         this.setOnDragDetected(new EventHandler<MouseEvent>() {
             @Override public void handle(MouseEvent event) {
                 Dragboard db = startDragAndDrop(TransferMode.ANY);
                 ClipboardContent content = new ClipboardContent();
+                
                 content.putString("Hello!");
                 db.setContent(content);
                 event.consume();

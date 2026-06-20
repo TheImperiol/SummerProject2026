@@ -1,5 +1,9 @@
 package ApplicationFX;
 
+import javafx.event.*;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.TransferMode;
 import javafx.scene.layout.*;
 
 public class Structure extends GridPane {
@@ -14,6 +18,32 @@ public class Structure extends GridPane {
         gpSidebarContent = new GridPane();
         gpEmulator = new GridPane();
         gpAppTopBar = new GridPane();
+
+        gpEmulator.setOnDragOver(new EventHandler<DragEvent>() {
+            @Override public void handle(DragEvent event) {
+                Dragboard db = event.getDragboard();
+                if (db.hasString()) {
+                    event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+                }
+            event.consume();
+            }
+        });
+
+        gpEmulator.setOnDragDropped(new EventHandler<DragEvent>() {
+            @Override public void handle(DragEvent event) {
+                Dragboard db = event.getDragboard();
+                boolean success = false;
+                if (db.hasString()) {
+                    System.out.println("Dropped: " + db.getString());
+                    success = true;
+                    
+                    }
+                event.setDropCompleted(success);
+                event.consume();
+            }
+        });
+
+        
 
         gpAppTopBar.setGridLinesVisible(true);
         gpMain.setGridLinesVisible(true);

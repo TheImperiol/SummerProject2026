@@ -19,7 +19,7 @@ public class MainSummerApp extends Application{
 
         ScriptCard card = new ScriptCard(0.87f, 8.78f);
         //DeviceCard devCard = new DeviceCard("Device", "desc");
-        frontend.gpEmulator.add(card, 0, 0);
+        frontend.gpSidebarContent.add(card, 0, 0);
 
         vBox.getChildren().addAll(frontend.gpAppTopBar,sep);
 
