@@ -1,8 +1,10 @@
 package ApplicationFX;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.Base64;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.*;
@@ -13,6 +15,10 @@ public abstract class DraggableCard extends GeneralCard implements Serializable{
 
     public float GetX(){
         return position[0];
+    }
+
+    public DraggableCard GetCard(){
+        return this;
     }
 
     public void SetX(float x){
@@ -35,16 +41,18 @@ public abstract class DraggableCard extends GeneralCard implements Serializable{
 
         this.setOnDragDetected(new EventHandler<MouseEvent>() {
             @Override public void handle(MouseEvent event) {
-                DataFormat fmt = new DataFormat("DraggableCard/card");
                 Dragboard db = startDragAndDrop(TransferMode.ANY);
                 Clipboard clipboard = Clipboard.getSystemClipboard();
                 ClipboardContent content = new ClipboardContent();
-                
-                //content.put(fmt, this);
-                ByteArrayOutputStream bytStream = new ByteArrayOutputStream();
-                
-
-                //db.setContent(content);
+                try(ByteArrayOutputStream bytStream = new ByteArrayOutputStream();
+                    ObjectOutputStream objStream = new ObjectOutputStream(bytStream)){
+                    objStream.writeObject(GetCard());
+                    content.putString(Base64.getEncoder().encodeToString(bytStream.toByteArray()));
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                db.setContent(content);
                 event.consume();
             }
         });

@@ -1,5 +1,11 @@
 package ApplicationFX;
 
+import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.Base64;
+
 import javafx.event.*;
 import javafx.scene.input.*;
 import javafx.scene.control.*;
@@ -31,14 +37,23 @@ public class Structure extends GridPane {
         gpEmulator.setOnDragDropped(new EventHandler<DragEvent>() {
             @Override public void handle(DragEvent event) {
                 Dragboard db = event.getDragboard();
-                DataFormat fmt = new DataFormat("DraggableCard/card");
                 Clipboard clipboard = Clipboard.getSystemClipboard();
                 boolean success = false;
-                if( clipboard.getContent(fmt) != null){
-                    System.out.println("Dropped: ");
+                if( clipboard.hasString()){
+                    System.out.println("Dropped: "+ clipboard.getString());
                     success = true;
-                    //Label movedItem = new Label(db.getString());
-                    //gpEmulator.add(movedItem,0,0);
+                    final byte[] bytes = Base64.getDecoder().decode(clipboard.getString());
+                    try(ByteArrayInputStream bytStream = new ByteArrayInputStream(bytes);
+                    ObjectInputStream objStream = new ObjectInputStream(bytStream)){
+                        DraggableCard deserializDraggableCard = (DraggableCard) objStream.readObject();
+                        gpEmulator.add(deserializDraggableCard, 0,0);
+                    } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
                 }
                 event.setDropCompleted(success);
                 event.consume();
