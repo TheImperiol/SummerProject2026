@@ -1,9 +1,8 @@
 package ApplicationFX;
 
 import javafx.event.*;
-import javafx.scene.input.DragEvent;
-import javafx.scene.input.Dragboard;
-import javafx.scene.input.TransferMode;
+import javafx.scene.input.*;
+import javafx.scene.control.*;
 import javafx.scene.layout.*;
 
 public class Structure extends GridPane {
@@ -32,12 +31,15 @@ public class Structure extends GridPane {
         gpEmulator.setOnDragDropped(new EventHandler<DragEvent>() {
             @Override public void handle(DragEvent event) {
                 Dragboard db = event.getDragboard();
+                DataFormat fmt = new DataFormat("DraggableCard/card");
+                Clipboard clipboard = Clipboard.getSystemClipboard();
                 boolean success = false;
-                if (db.hasString()) {
-                    System.out.println("Dropped: " + db.getString());
+                if( clipboard.getContent(fmt) != null){
+                    System.out.println("Dropped: ");
                     success = true;
-                    
-                    }
+                    //Label movedItem = new Label(db.getString());
+                    //gpEmulator.add(movedItem,0,0);
+                }
                 event.setDropCompleted(success);
                 event.consume();
             }

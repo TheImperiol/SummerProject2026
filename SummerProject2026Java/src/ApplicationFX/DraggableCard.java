@@ -1,10 +1,14 @@
 package ApplicationFX;
 
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
 import javafx.event.EventHandler;
 import javafx.scene.input.*;
 
 
-public abstract class DraggableCard extends GeneralCard{
+public abstract class DraggableCard extends GeneralCard implements Serializable{
     protected float[] position = new float[2];
 
     public float GetX(){
@@ -31,11 +35,16 @@ public abstract class DraggableCard extends GeneralCard{
 
         this.setOnDragDetected(new EventHandler<MouseEvent>() {
             @Override public void handle(MouseEvent event) {
+                DataFormat fmt = new DataFormat("DraggableCard/card");
                 Dragboard db = startDragAndDrop(TransferMode.ANY);
+                Clipboard clipboard = Clipboard.getSystemClipboard();
                 ClipboardContent content = new ClipboardContent();
                 
-                content.putString("Hello!");
-                db.setContent(content);
+                //content.put(fmt, this);
+                ByteArrayOutputStream bytStream = new ByteArrayOutputStream();
+                
+
+                //db.setContent(content);
                 event.consume();
             }
         });
