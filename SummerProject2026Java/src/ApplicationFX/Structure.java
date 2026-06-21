@@ -43,6 +43,9 @@ public class Structure extends GridPane {
                     try(ByteArrayInputStream bytStream = new ByteArrayInputStream(bytes);
                     ObjectInputStream objStream = new ObjectInputStream(bytStream)){
                         DraggableCard deserializDraggableCard = (DraggableCard) objStream.readObject();
+                        System.out.println(deserializDraggableCard.getChildren().size());
+                        GridPane.setFillHeight(deserializDraggableCard,false);
+                        GridPane.setFillWidth(deserializDraggableCard,false);
                         gpEmulator.add(deserializDraggableCard, 0,0);
                     } catch (IOException e) {
                     // TODO Auto-generated catch block
@@ -66,41 +69,41 @@ public class Structure extends GridPane {
         gpSidebarContent.setGridLinesVisible(true);
 
         ColumnConstraints mainColumnSidebar = new ColumnConstraints();
-        mainColumnSidebar.setHgrow(Priority.ALWAYS);
+        //mainColumnSidebar.setHgrow(Priority.ALWAYS);
         mainColumnSidebar.setPercentWidth(20);
         ColumnConstraints mainColumnEmulator = new ColumnConstraints();
-        mainColumnEmulator.setHgrow(Priority.ALWAYS);
+        //mainColumnEmulator.setHgrow(Priority.ALWAYS);
         mainColumnEmulator.setPercentWidth(80);
         ColumnConstraints sidebarColumnDevices = new ColumnConstraints();
-        sidebarColumnDevices.setHgrow(Priority.ALWAYS);
+        //sidebarColumnDevices.setHgrow(Priority.ALWAYS);
         sidebarColumnDevices.setPercentWidth(33);
         ColumnConstraints sidebarColumnComponents = new ColumnConstraints();
-        sidebarColumnComponents.setHgrow(Priority.ALWAYS);
+        //sidebarColumnComponents.setHgrow(Priority.ALWAYS);
         sidebarColumnComponents.setPercentWidth(33);
         ColumnConstraints sidebarColumnScripts = new ColumnConstraints();
-        sidebarColumnScripts.setHgrow(Priority.ALWAYS);
+        //sidebarColumnScripts.setHgrow(Priority.ALWAYS);
         sidebarColumnScripts.setPercentWidth(34);
         ColumnConstraints sidebarColumnFilling = new ColumnConstraints();
-        sidebarColumnFilling.setHgrow(Priority.ALWAYS);
+        //sidebarColumnFilling.setHgrow(Priority.ALWAYS);
         sidebarColumnFilling.setPercentWidth(100);
         
         RowConstraints mainRowSettings = new RowConstraints();
-        mainRowSettings.setVgrow(Priority.ALWAYS);
+        //mainRowSettings.setVgrow(Priority.ALWAYS);
         mainRowSettings.setPercentHeight(5);
         RowConstraints mainRowContents = new RowConstraints();
-        mainRowContents.setVgrow(Priority.ALWAYS);
+        //mainRowContents.setVgrow(Priority.ALWAYS);
         mainRowContents.setPercentHeight(80);
         RowConstraints mainRowTerminal = new RowConstraints();
-        mainRowTerminal.setVgrow(Priority.ALWAYS);
+        //mainRowTerminal.setVgrow(Priority.ALWAYS);
         mainRowTerminal.setPercentHeight(20);
         RowConstraints sidebarRowTabs = new RowConstraints();
-        sidebarRowTabs.setVgrow(Priority.ALWAYS);
+        //sidebarRowTabs.setVgrow(Priority.ALWAYS);
         sidebarRowTabs.setPercentHeight(5);
         RowConstraints sidebarRowContent = new RowConstraints();
-        sidebarRowContent.setVgrow(Priority.ALWAYS);
+        //sidebarRowContent.setVgrow(Priority.ALWAYS);
         sidebarRowContent.setPercentHeight(95);
         RowConstraints sidebarRowFilling = new RowConstraints();
-        sidebarRowFilling.setVgrow(Priority.ALWAYS);
+        //sidebarRowFilling.setVgrow(Priority.ALWAYS);
         sidebarRowFilling.setPercentHeight(100);
 
         gpAppTopBar.getRowConstraints().addAll(mainRowSettings, sidebarRowContent);

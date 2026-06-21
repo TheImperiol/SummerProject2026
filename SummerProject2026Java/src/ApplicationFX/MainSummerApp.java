@@ -15,7 +15,7 @@ public class MainSummerApp extends Application{
         
         Structure frontend = new Structure();
         Separator sep = new Separator();
-        VBox.setVgrow(frontend.gpAppTopBar, Priority.ALWAYS );
+        //VBox.setVgrow(frontend.gpAppTopBar, Priority.ALWAYS );
 
         ScriptCard card = new ScriptCard(0.87888888888888888f, 8.78f);
         //DeviceCard devCard = new DeviceCard("Device", "desc");

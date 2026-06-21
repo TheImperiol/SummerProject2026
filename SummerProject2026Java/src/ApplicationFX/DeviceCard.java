@@ -10,5 +10,6 @@ public class DeviceCard extends GeneralCard {
         Label titleLabel = new Label(cardTitle);
         Label descLabel = new Label(cardDescription);
         this.getChildren().addAll(titleLabel,descLabel);
+        
     }
 }
