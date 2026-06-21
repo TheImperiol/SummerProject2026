@@ -31,7 +31,9 @@ public abstract class GeneralCard extends VBox{
 
     public GeneralCard(){
         cardData = new CardData();
-        this.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
+        this.setPrefSize(50, 50);
+        this.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        this.setMinSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
         this.setStyle(cssLayout);
     }
 
