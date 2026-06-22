@@ -4,15 +4,19 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Base64;
+import java.util.List;
 
 import javafx.event.EventHandler;
+import javafx.scene.control.Control;
 import javafx.scene.input.*;
 
 
 public abstract class DraggableCard extends GeneralCard implements Serializable{
     protected float[] position = new float[2];
 
+    public ArrayList<Control> children = new ArrayList<Control>();
     public float GetX(){
         return position[0];
     }
@@ -32,6 +36,14 @@ public abstract class DraggableCard extends GeneralCard implements Serializable{
     public void SetY(float y){
         position[1] = y;
     }
+
+    public void StoreChildren(){
+        for( Object x : getChildren().toArray()){
+            children.add((Control) x);
+        }
+        System.out.println(children.size());
+    }
+
     public DraggableCard(float x, float y){
         super();
         SetX(x);
@@ -44,6 +56,8 @@ public abstract class DraggableCard extends GeneralCard implements Serializable{
                 Dragboard db = startDragAndDrop(TransferMode.ANY);
                 Clipboard clipboard = Clipboard.getSystemClipboard();
                 ClipboardContent content = new ClipboardContent();
+                StoreChildren();
+
                 try(ByteArrayOutputStream bytStream = new ByteArrayOutputStream();
                     ObjectOutputStream objStream = new ObjectOutputStream(bytStream)){
                     objStream.writeObject(GetCard());

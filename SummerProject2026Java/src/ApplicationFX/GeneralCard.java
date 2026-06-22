@@ -1,5 +1,7 @@
 package ApplicationFX;
 
+import ProtoMessages.*;
+import ProtoMessages.CardWrapperProto.CardWrapper;
 import javafx.scene.layout.*;
 
 public abstract class GeneralCard extends VBox{
@@ -9,6 +11,9 @@ public abstract class GeneralCard extends VBox{
     String cssLayout = "-fx-border-insets: 5;\n" +
                    "-fx-border-width: 2;\n" +
                    "-fx-border-color: black";
+
+    CardWrapper wrapper = CardWrapper.newBuilder().setName("test proto").build();
+
     public String GetCardTitle(){
         return cardTitle;
     }

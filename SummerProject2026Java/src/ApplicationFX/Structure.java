@@ -43,7 +43,7 @@ public class Structure extends GridPane {
                     try(ByteArrayInputStream bytStream = new ByteArrayInputStream(bytes);
                     ObjectInputStream objStream = new ObjectInputStream(bytStream)){
                         DraggableCard deserializDraggableCard = (DraggableCard) objStream.readObject();
-                        System.out.println(deserializDraggableCard.getChildren().size());
+                        System.out.println(deserializDraggableCard.children.size());
                         GridPane.setFillHeight(deserializDraggableCard,false);
                         GridPane.setFillWidth(deserializDraggableCard,false);
                         gpEmulator.add(deserializDraggableCard, 0,0);
