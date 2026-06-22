@@ -5,5 +5,9 @@ package ProtoMessages;
 option java_outer_classname = "CardWrapperProto";
 
 message CardWrapper {
-    optional string name = 1;
+    oneof card {
+        ScriptCard scriptCard = 1;
+        DeviceCard deviceCard = 2;
+        ComponentCard componentCard = 3;
+    }
 }
