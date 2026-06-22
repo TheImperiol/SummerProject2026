@@ -31,21 +31,51 @@ public final class CardWrapperProto extends com.google.protobuf.GeneratedFile {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string name = 1;</code>
-     * @return Whether the name field is set.
+     * <code>.ProtoMessages.ScriptCard scriptCard = 1;</code>
+     * @return Whether the scriptCard field is set.
      */
-    boolean hasName();
+    boolean hasScriptCard();
     /**
-     * <code>optional string name = 1;</code>
-     * @return The name.
+     * <code>.ProtoMessages.ScriptCard scriptCard = 1;</code>
+     * @return The scriptCard.
      */
-    java.lang.String getName();
+    ProtoMessages.ScriptCardOuterClass.ScriptCard getScriptCard();
     /**
-     * <code>optional string name = 1;</code>
-     * @return The bytes for name.
+     * <code>.ProtoMessages.ScriptCard scriptCard = 1;</code>
      */
-    com.google.protobuf.ByteString
-        getNameBytes();
+    ProtoMessages.ScriptCardOuterClass.ScriptCardOrBuilder getScriptCardOrBuilder();
+
+    /**
+     * <code>.ProtoMessages.DeviceCard deviceCard = 2;</code>
+     * @return Whether the deviceCard field is set.
+     */
+    boolean hasDeviceCard();
+    /**
+     * <code>.ProtoMessages.DeviceCard deviceCard = 2;</code>
+     * @return The deviceCard.
+     */
+    ProtoMessages.DeviceCardOuterClass.DeviceCard getDeviceCard();
+    /**
+     * <code>.ProtoMessages.DeviceCard deviceCard = 2;</code>
+     */
+    ProtoMessages.DeviceCardOuterClass.DeviceCardOrBuilder getDeviceCardOrBuilder();
+
+    /**
+     * <code>.ProtoMessages.ComponentCard componentCard = 3;</code>
+     * @return Whether the componentCard field is set.
+     */
+    boolean hasComponentCard();
+    /**
+     * <code>.ProtoMessages.ComponentCard componentCard = 3;</code>
+     * @return The componentCard.
+     */
+    ProtoMessages.ComponentCardOuterClass.ComponentCard getComponentCard();
+    /**
+     * <code>.ProtoMessages.ComponentCard componentCard = 3;</code>
+     */
+    ProtoMessages.ComponentCardOuterClass.ComponentCardOrBuilder getComponentCardOrBuilder();
+
+    ProtoMessages.CardWrapperProto.CardWrapper.CardCase getCardCase();
   }
   /**
    * Protobuf type {@code ProtoMessages.CardWrapper}
@@ -69,7 +99,6 @@ public final class CardWrapperProto extends com.google.protobuf.GeneratedFile {
       super(builder);
     }
     private CardWrapper() {
-      name_ = "";
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -90,54 +119,141 @@ public final class CardWrapperProto extends com.google.protobuf.GeneratedFile {
               ProtoMessages.CardWrapperProto.CardWrapper.class, ProtoMessages.CardWrapperProto.CardWrapper.Builder.class);
     }
 
-    private int bitField0_;
-    public static final int NAME_FIELD_NUMBER = 1;
+    private int cardCase_ = 0;
     @SuppressWarnings("serial")
-    private volatile java.lang.Object name_ = "";
-    /**
-     * <code>optional string name = 1;</code>
-     * @return Whether the name field is set.
-     */
-    @java.lang.Override
-    public boolean hasName() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>optional string name = 1;</code>
-     * @return The name.
-     */
-    @java.lang.Override
-    public java.lang.String getName() {
-      java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          name_ = s;
+    private java.lang.Object card_;
+    public enum CardCase
+        implements com.google.protobuf.Internal.EnumLite,
+            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+      SCRIPTCARD(1),
+      DEVICECARD(2),
+      COMPONENTCARD(3),
+      CARD_NOT_SET(0);
+      private final int value;
+      private CardCase(int value) {
+        this.value = value;
+      }
+      /**
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static CardCase valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static CardCase forNumber(int value) {
+        switch (value) {
+          case 1: return SCRIPTCARD;
+          case 2: return DEVICECARD;
+          case 3: return COMPONENTCARD;
+          case 0: return CARD_NOT_SET;
+          default: return null;
         }
-        return s;
       }
+      public int getNumber() {
+        return this.value;
+      }
+    };
+
+    public CardCase
+    getCardCase() {
+      return CardCase.forNumber(
+          cardCase_);
     }
+
+    public static final int SCRIPTCARD_FIELD_NUMBER = 1;
     /**
-     * <code>optional string name = 1;</code>
-     * @return The bytes for name.
+     * <code>.ProtoMessages.ScriptCard scriptCard = 1;</code>
+     * @return Whether the scriptCard field is set.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getNameBytes() {
-      java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        name_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
+    public boolean hasScriptCard() {
+      return cardCase_ == 1;
+    }
+    /**
+     * <code>.ProtoMessages.ScriptCard scriptCard = 1;</code>
+     * @return The scriptCard.
+     */
+    @java.lang.Override
+    public ProtoMessages.ScriptCardOuterClass.ScriptCard getScriptCard() {
+      if (cardCase_ == 1) {
+         return (ProtoMessages.ScriptCardOuterClass.ScriptCard) card_;
       }
+      return ProtoMessages.ScriptCardOuterClass.ScriptCard.getDefaultInstance();
+    }
+    /**
+     * <code>.ProtoMessages.ScriptCard scriptCard = 1;</code>
+     */
+    @java.lang.Override
+    public ProtoMessages.ScriptCardOuterClass.ScriptCardOrBuilder getScriptCardOrBuilder() {
+      if (cardCase_ == 1) {
+         return (ProtoMessages.ScriptCardOuterClass.ScriptCard) card_;
+      }
+      return ProtoMessages.ScriptCardOuterClass.ScriptCard.getDefaultInstance();
+    }
+
+    public static final int DEVICECARD_FIELD_NUMBER = 2;
+    /**
+     * <code>.ProtoMessages.DeviceCard deviceCard = 2;</code>
+     * @return Whether the deviceCard field is set.
+     */
+    @java.lang.Override
+    public boolean hasDeviceCard() {
+      return cardCase_ == 2;
+    }
+    /**
+     * <code>.ProtoMessages.DeviceCard deviceCard = 2;</code>
+     * @return The deviceCard.
+     */
+    @java.lang.Override
+    public ProtoMessages.DeviceCardOuterClass.DeviceCard getDeviceCard() {
+      if (cardCase_ == 2) {
+         return (ProtoMessages.DeviceCardOuterClass.DeviceCard) card_;
+      }
+      return ProtoMessages.DeviceCardOuterClass.DeviceCard.getDefaultInstance();
+    }
+    /**
+     * <code>.ProtoMessages.DeviceCard deviceCard = 2;</code>
+     */
+    @java.lang.Override
+    public ProtoMessages.DeviceCardOuterClass.DeviceCardOrBuilder getDeviceCardOrBuilder() {
+      if (cardCase_ == 2) {
+         return (ProtoMessages.DeviceCardOuterClass.DeviceCard) card_;
+      }
+      return ProtoMessages.DeviceCardOuterClass.DeviceCard.getDefaultInstance();
+    }
+
+    public static final int COMPONENTCARD_FIELD_NUMBER = 3;
+    /**
+     * <code>.ProtoMessages.ComponentCard componentCard = 3;</code>
+     * @return Whether the componentCard field is set.
+     */
+    @java.lang.Override
+    public boolean hasComponentCard() {
+      return cardCase_ == 3;
+    }
+    /**
+     * <code>.ProtoMessages.ComponentCard componentCard = 3;</code>
+     * @return The componentCard.
+     */
+    @java.lang.Override
+    public ProtoMessages.ComponentCardOuterClass.ComponentCard getComponentCard() {
+      if (cardCase_ == 3) {
+         return (ProtoMessages.ComponentCardOuterClass.ComponentCard) card_;
+      }
+      return ProtoMessages.ComponentCardOuterClass.ComponentCard.getDefaultInstance();
+    }
+    /**
+     * <code>.ProtoMessages.ComponentCard componentCard = 3;</code>
+     */
+    @java.lang.Override
+    public ProtoMessages.ComponentCardOuterClass.ComponentCardOrBuilder getComponentCardOrBuilder() {
+      if (cardCase_ == 3) {
+         return (ProtoMessages.ComponentCardOuterClass.ComponentCard) card_;
+      }
+      return ProtoMessages.ComponentCardOuterClass.ComponentCard.getDefaultInstance();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -154,8 +270,14 @@ public final class CardWrapperProto extends com.google.protobuf.GeneratedFile {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, name_);
+      if (cardCase_ == 1) {
+        output.writeMessage(1, (ProtoMessages.ScriptCardOuterClass.ScriptCard) card_);
+      }
+      if (cardCase_ == 2) {
+        output.writeMessage(2, (ProtoMessages.DeviceCardOuterClass.DeviceCard) card_);
+      }
+      if (cardCase_ == 3) {
+        output.writeMessage(3, (ProtoMessages.ComponentCardOuterClass.ComponentCard) card_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -166,8 +288,17 @@ public final class CardWrapperProto extends com.google.protobuf.GeneratedFile {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, name_);
+      if (cardCase_ == 1) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, (ProtoMessages.ScriptCardOuterClass.ScriptCard) card_);
+      }
+      if (cardCase_ == 2) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, (ProtoMessages.DeviceCardOuterClass.DeviceCard) card_);
+      }
+      if (cardCase_ == 3) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, (ProtoMessages.ComponentCardOuterClass.ComponentCard) card_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -184,10 +315,22 @@ public final class CardWrapperProto extends com.google.protobuf.GeneratedFile {
       }
       ProtoMessages.CardWrapperProto.CardWrapper other = (ProtoMessages.CardWrapperProto.CardWrapper) obj;
 
-      if (hasName() != other.hasName()) return false;
-      if (hasName()) {
-        if (!getName()
-            .equals(other.getName())) return false;
+      if (!getCardCase().equals(other.getCardCase())) return false;
+      switch (cardCase_) {
+        case 1:
+          if (!getScriptCard()
+              .equals(other.getScriptCard())) return false;
+          break;
+        case 2:
+          if (!getDeviceCard()
+              .equals(other.getDeviceCard())) return false;
+          break;
+        case 3:
+          if (!getComponentCard()
+              .equals(other.getComponentCard())) return false;
+          break;
+        case 0:
+        default:
       }
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
@@ -200,9 +343,21 @@ public final class CardWrapperProto extends com.google.protobuf.GeneratedFile {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasName()) {
-        hash = (37 * hash) + NAME_FIELD_NUMBER;
-        hash = (53 * hash) + getName().hashCode();
+      switch (cardCase_) {
+        case 1:
+          hash = (37 * hash) + SCRIPTCARD_FIELD_NUMBER;
+          hash = (53 * hash) + getScriptCard().hashCode();
+          break;
+        case 2:
+          hash = (37 * hash) + DEVICECARD_FIELD_NUMBER;
+          hash = (53 * hash) + getDeviceCard().hashCode();
+          break;
+        case 3:
+          hash = (37 * hash) + COMPONENTCARD_FIELD_NUMBER;
+          hash = (53 * hash) + getComponentCard().hashCode();
+          break;
+        case 0:
+        default:
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -335,7 +490,17 @@ public final class CardWrapperProto extends com.google.protobuf.GeneratedFile {
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
-        name_ = "";
+        if (scriptCardBuilder_ != null) {
+          scriptCardBuilder_.clear();
+        }
+        if (deviceCardBuilder_ != null) {
+          deviceCardBuilder_.clear();
+        }
+        if (componentCardBuilder_ != null) {
+          componentCardBuilder_.clear();
+        }
+        cardCase_ = 0;
+        card_ = null;
         return this;
       }
 
@@ -363,18 +528,30 @@ public final class CardWrapperProto extends com.google.protobuf.GeneratedFile {
       public ProtoMessages.CardWrapperProto.CardWrapper buildPartial() {
         ProtoMessages.CardWrapperProto.CardWrapper result = new ProtoMessages.CardWrapperProto.CardWrapper(this);
         if (bitField0_ != 0) { buildPartial0(result); }
+        buildPartialOneofs(result);
         onBuilt();
         return result;
       }
 
       private void buildPartial0(ProtoMessages.CardWrapperProto.CardWrapper result) {
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.name_ = name_;
-          to_bitField0_ |= 0x00000001;
+      }
+
+      private void buildPartialOneofs(ProtoMessages.CardWrapperProto.CardWrapper result) {
+        result.cardCase_ = cardCase_;
+        result.card_ = this.card_;
+        if (cardCase_ == 1 &&
+            scriptCardBuilder_ != null) {
+          result.card_ = scriptCardBuilder_.build();
         }
-        result.bitField0_ |= to_bitField0_;
+        if (cardCase_ == 2 &&
+            deviceCardBuilder_ != null) {
+          result.card_ = deviceCardBuilder_.build();
+        }
+        if (cardCase_ == 3 &&
+            componentCardBuilder_ != null) {
+          result.card_ = componentCardBuilder_.build();
+        }
       }
 
       @java.lang.Override
@@ -389,10 +566,22 @@ public final class CardWrapperProto extends com.google.protobuf.GeneratedFile {
 
       public Builder mergeFrom(ProtoMessages.CardWrapperProto.CardWrapper other) {
         if (other == ProtoMessages.CardWrapperProto.CardWrapper.getDefaultInstance()) return this;
-        if (other.hasName()) {
-          name_ = other.name_;
-          bitField0_ |= 0x00000001;
-          onChanged();
+        switch (other.getCardCase()) {
+          case SCRIPTCARD: {
+            mergeScriptCard(other.getScriptCard());
+            break;
+          }
+          case DEVICECARD: {
+            mergeDeviceCard(other.getDeviceCard());
+            break;
+          }
+          case COMPONENTCARD: {
+            mergeComponentCard(other.getComponentCard());
+            break;
+          }
+          case CARD_NOT_SET: {
+            break;
+          }
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -421,10 +610,26 @@ public final class CardWrapperProto extends com.google.protobuf.GeneratedFile {
                 done = true;
                 break;
               case 10: {
-                name_ = input.readBytes();
-                bitField0_ |= 0x00000001;
+                input.readMessage(
+                    internalGetScriptCardFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                cardCase_ = 1;
                 break;
               } // case 10
+              case 18: {
+                input.readMessage(
+                    internalGetDeviceCardFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                cardCase_ = 2;
+                break;
+              } // case 18
+              case 26: {
+                input.readMessage(
+                    internalGetComponentCardFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                cardCase_ = 3;
+                break;
+              } // case 26
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -440,86 +645,447 @@ public final class CardWrapperProto extends com.google.protobuf.GeneratedFile {
         } // finally
         return this;
       }
+      private int cardCase_ = 0;
+      private java.lang.Object card_;
+      public CardCase
+          getCardCase() {
+        return CardCase.forNumber(
+            cardCase_);
+      }
+
+      public Builder clearCard() {
+        cardCase_ = 0;
+        card_ = null;
+        onChanged();
+        return this;
+      }
+
       private int bitField0_;
 
-      private java.lang.Object name_ = "";
+      private com.google.protobuf.SingleFieldBuilder<
+          ProtoMessages.ScriptCardOuterClass.ScriptCard, ProtoMessages.ScriptCardOuterClass.ScriptCard.Builder, ProtoMessages.ScriptCardOuterClass.ScriptCardOrBuilder> scriptCardBuilder_;
       /**
-       * <code>optional string name = 1;</code>
-       * @return Whether the name field is set.
+       * <code>.ProtoMessages.ScriptCard scriptCard = 1;</code>
+       * @return Whether the scriptCard field is set.
        */
-      public boolean hasName() {
-        return ((bitField0_ & 0x00000001) != 0);
+      @java.lang.Override
+      public boolean hasScriptCard() {
+        return cardCase_ == 1;
       }
       /**
-       * <code>optional string name = 1;</code>
-       * @return The name.
+       * <code>.ProtoMessages.ScriptCard scriptCard = 1;</code>
+       * @return The scriptCard.
        */
-      public java.lang.String getName() {
-        java.lang.Object ref = name_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            name_ = s;
+      @java.lang.Override
+      public ProtoMessages.ScriptCardOuterClass.ScriptCard getScriptCard() {
+        if (scriptCardBuilder_ == null) {
+          if (cardCase_ == 1) {
+            return (ProtoMessages.ScriptCardOuterClass.ScriptCard) card_;
           }
-          return s;
+          return ProtoMessages.ScriptCardOuterClass.ScriptCard.getDefaultInstance();
         } else {
-          return (java.lang.String) ref;
+          if (cardCase_ == 1) {
+            return scriptCardBuilder_.getMessage();
+          }
+          return ProtoMessages.ScriptCardOuterClass.ScriptCard.getDefaultInstance();
         }
       }
       /**
-       * <code>optional string name = 1;</code>
-       * @return The bytes for name.
+       * <code>.ProtoMessages.ScriptCard scriptCard = 1;</code>
        */
-      public com.google.protobuf.ByteString
-          getNameBytes() {
-        java.lang.Object ref = name_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          name_ = b;
-          return b;
+      public Builder setScriptCard(ProtoMessages.ScriptCardOuterClass.ScriptCard value) {
+        if (scriptCardBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          card_ = value;
+          onChanged();
         } else {
-          return (com.google.protobuf.ByteString) ref;
+          scriptCardBuilder_.setMessage(value);
+        }
+        cardCase_ = 1;
+        return this;
+      }
+      /**
+       * <code>.ProtoMessages.ScriptCard scriptCard = 1;</code>
+       */
+      public Builder setScriptCard(
+          ProtoMessages.ScriptCardOuterClass.ScriptCard.Builder builderForValue) {
+        if (scriptCardBuilder_ == null) {
+          card_ = builderForValue.build();
+          onChanged();
+        } else {
+          scriptCardBuilder_.setMessage(builderForValue.build());
+        }
+        cardCase_ = 1;
+        return this;
+      }
+      /**
+       * <code>.ProtoMessages.ScriptCard scriptCard = 1;</code>
+       */
+      public Builder mergeScriptCard(ProtoMessages.ScriptCardOuterClass.ScriptCard value) {
+        if (scriptCardBuilder_ == null) {
+          if (cardCase_ == 1 &&
+              card_ != ProtoMessages.ScriptCardOuterClass.ScriptCard.getDefaultInstance()) {
+            card_ = ProtoMessages.ScriptCardOuterClass.ScriptCard.newBuilder((ProtoMessages.ScriptCardOuterClass.ScriptCard) card_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            card_ = value;
+          }
+          onChanged();
+        } else {
+          if (cardCase_ == 1) {
+            scriptCardBuilder_.mergeFrom(value);
+          } else {
+            scriptCardBuilder_.setMessage(value);
+          }
+        }
+        cardCase_ = 1;
+        return this;
+      }
+      /**
+       * <code>.ProtoMessages.ScriptCard scriptCard = 1;</code>
+       */
+      public Builder clearScriptCard() {
+        if (scriptCardBuilder_ == null) {
+          if (cardCase_ == 1) {
+            cardCase_ = 0;
+            card_ = null;
+            onChanged();
+          }
+        } else {
+          if (cardCase_ == 1) {
+            cardCase_ = 0;
+            card_ = null;
+          }
+          scriptCardBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.ProtoMessages.ScriptCard scriptCard = 1;</code>
+       */
+      public ProtoMessages.ScriptCardOuterClass.ScriptCard.Builder getScriptCardBuilder() {
+        return internalGetScriptCardFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.ProtoMessages.ScriptCard scriptCard = 1;</code>
+       */
+      @java.lang.Override
+      public ProtoMessages.ScriptCardOuterClass.ScriptCardOrBuilder getScriptCardOrBuilder() {
+        if ((cardCase_ == 1) && (scriptCardBuilder_ != null)) {
+          return scriptCardBuilder_.getMessageOrBuilder();
+        } else {
+          if (cardCase_ == 1) {
+            return (ProtoMessages.ScriptCardOuterClass.ScriptCard) card_;
+          }
+          return ProtoMessages.ScriptCardOuterClass.ScriptCard.getDefaultInstance();
         }
       }
       /**
-       * <code>optional string name = 1;</code>
-       * @param value The name to set.
-       * @return This builder for chaining.
+       * <code>.ProtoMessages.ScriptCard scriptCard = 1;</code>
        */
-      public Builder setName(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        name_ = value;
-        bitField0_ |= 0x00000001;
+      private com.google.protobuf.SingleFieldBuilder<
+          ProtoMessages.ScriptCardOuterClass.ScriptCard, ProtoMessages.ScriptCardOuterClass.ScriptCard.Builder, ProtoMessages.ScriptCardOuterClass.ScriptCardOrBuilder> 
+          internalGetScriptCardFieldBuilder() {
+        if (scriptCardBuilder_ == null) {
+          if (!(cardCase_ == 1)) {
+            card_ = ProtoMessages.ScriptCardOuterClass.ScriptCard.getDefaultInstance();
+          }
+          scriptCardBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              ProtoMessages.ScriptCardOuterClass.ScriptCard, ProtoMessages.ScriptCardOuterClass.ScriptCard.Builder, ProtoMessages.ScriptCardOuterClass.ScriptCardOrBuilder>(
+                  (ProtoMessages.ScriptCardOuterClass.ScriptCard) card_,
+                  getParentForChildren(),
+                  isClean());
+          card_ = null;
+        }
+        cardCase_ = 1;
         onChanged();
+        return scriptCardBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilder<
+          ProtoMessages.DeviceCardOuterClass.DeviceCard, ProtoMessages.DeviceCardOuterClass.DeviceCard.Builder, ProtoMessages.DeviceCardOuterClass.DeviceCardOrBuilder> deviceCardBuilder_;
+      /**
+       * <code>.ProtoMessages.DeviceCard deviceCard = 2;</code>
+       * @return Whether the deviceCard field is set.
+       */
+      @java.lang.Override
+      public boolean hasDeviceCard() {
+        return cardCase_ == 2;
+      }
+      /**
+       * <code>.ProtoMessages.DeviceCard deviceCard = 2;</code>
+       * @return The deviceCard.
+       */
+      @java.lang.Override
+      public ProtoMessages.DeviceCardOuterClass.DeviceCard getDeviceCard() {
+        if (deviceCardBuilder_ == null) {
+          if (cardCase_ == 2) {
+            return (ProtoMessages.DeviceCardOuterClass.DeviceCard) card_;
+          }
+          return ProtoMessages.DeviceCardOuterClass.DeviceCard.getDefaultInstance();
+        } else {
+          if (cardCase_ == 2) {
+            return deviceCardBuilder_.getMessage();
+          }
+          return ProtoMessages.DeviceCardOuterClass.DeviceCard.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.ProtoMessages.DeviceCard deviceCard = 2;</code>
+       */
+      public Builder setDeviceCard(ProtoMessages.DeviceCardOuterClass.DeviceCard value) {
+        if (deviceCardBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          card_ = value;
+          onChanged();
+        } else {
+          deviceCardBuilder_.setMessage(value);
+        }
+        cardCase_ = 2;
         return this;
       }
       /**
-       * <code>optional string name = 1;</code>
-       * @return This builder for chaining.
+       * <code>.ProtoMessages.DeviceCard deviceCard = 2;</code>
        */
-      public Builder clearName() {
-        name_ = getDefaultInstance().getName();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
+      public Builder setDeviceCard(
+          ProtoMessages.DeviceCardOuterClass.DeviceCard.Builder builderForValue) {
+        if (deviceCardBuilder_ == null) {
+          card_ = builderForValue.build();
+          onChanged();
+        } else {
+          deviceCardBuilder_.setMessage(builderForValue.build());
+        }
+        cardCase_ = 2;
         return this;
       }
       /**
-       * <code>optional string name = 1;</code>
-       * @param value The bytes for name to set.
-       * @return This builder for chaining.
+       * <code>.ProtoMessages.DeviceCard deviceCard = 2;</code>
        */
-      public Builder setNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        name_ = value;
-        bitField0_ |= 0x00000001;
-        onChanged();
+      public Builder mergeDeviceCard(ProtoMessages.DeviceCardOuterClass.DeviceCard value) {
+        if (deviceCardBuilder_ == null) {
+          if (cardCase_ == 2 &&
+              card_ != ProtoMessages.DeviceCardOuterClass.DeviceCard.getDefaultInstance()) {
+            card_ = ProtoMessages.DeviceCardOuterClass.DeviceCard.newBuilder((ProtoMessages.DeviceCardOuterClass.DeviceCard) card_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            card_ = value;
+          }
+          onChanged();
+        } else {
+          if (cardCase_ == 2) {
+            deviceCardBuilder_.mergeFrom(value);
+          } else {
+            deviceCardBuilder_.setMessage(value);
+          }
+        }
+        cardCase_ = 2;
         return this;
+      }
+      /**
+       * <code>.ProtoMessages.DeviceCard deviceCard = 2;</code>
+       */
+      public Builder clearDeviceCard() {
+        if (deviceCardBuilder_ == null) {
+          if (cardCase_ == 2) {
+            cardCase_ = 0;
+            card_ = null;
+            onChanged();
+          }
+        } else {
+          if (cardCase_ == 2) {
+            cardCase_ = 0;
+            card_ = null;
+          }
+          deviceCardBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.ProtoMessages.DeviceCard deviceCard = 2;</code>
+       */
+      public ProtoMessages.DeviceCardOuterClass.DeviceCard.Builder getDeviceCardBuilder() {
+        return internalGetDeviceCardFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.ProtoMessages.DeviceCard deviceCard = 2;</code>
+       */
+      @java.lang.Override
+      public ProtoMessages.DeviceCardOuterClass.DeviceCardOrBuilder getDeviceCardOrBuilder() {
+        if ((cardCase_ == 2) && (deviceCardBuilder_ != null)) {
+          return deviceCardBuilder_.getMessageOrBuilder();
+        } else {
+          if (cardCase_ == 2) {
+            return (ProtoMessages.DeviceCardOuterClass.DeviceCard) card_;
+          }
+          return ProtoMessages.DeviceCardOuterClass.DeviceCard.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.ProtoMessages.DeviceCard deviceCard = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          ProtoMessages.DeviceCardOuterClass.DeviceCard, ProtoMessages.DeviceCardOuterClass.DeviceCard.Builder, ProtoMessages.DeviceCardOuterClass.DeviceCardOrBuilder> 
+          internalGetDeviceCardFieldBuilder() {
+        if (deviceCardBuilder_ == null) {
+          if (!(cardCase_ == 2)) {
+            card_ = ProtoMessages.DeviceCardOuterClass.DeviceCard.getDefaultInstance();
+          }
+          deviceCardBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              ProtoMessages.DeviceCardOuterClass.DeviceCard, ProtoMessages.DeviceCardOuterClass.DeviceCard.Builder, ProtoMessages.DeviceCardOuterClass.DeviceCardOrBuilder>(
+                  (ProtoMessages.DeviceCardOuterClass.DeviceCard) card_,
+                  getParentForChildren(),
+                  isClean());
+          card_ = null;
+        }
+        cardCase_ = 2;
+        onChanged();
+        return deviceCardBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilder<
+          ProtoMessages.ComponentCardOuterClass.ComponentCard, ProtoMessages.ComponentCardOuterClass.ComponentCard.Builder, ProtoMessages.ComponentCardOuterClass.ComponentCardOrBuilder> componentCardBuilder_;
+      /**
+       * <code>.ProtoMessages.ComponentCard componentCard = 3;</code>
+       * @return Whether the componentCard field is set.
+       */
+      @java.lang.Override
+      public boolean hasComponentCard() {
+        return cardCase_ == 3;
+      }
+      /**
+       * <code>.ProtoMessages.ComponentCard componentCard = 3;</code>
+       * @return The componentCard.
+       */
+      @java.lang.Override
+      public ProtoMessages.ComponentCardOuterClass.ComponentCard getComponentCard() {
+        if (componentCardBuilder_ == null) {
+          if (cardCase_ == 3) {
+            return (ProtoMessages.ComponentCardOuterClass.ComponentCard) card_;
+          }
+          return ProtoMessages.ComponentCardOuterClass.ComponentCard.getDefaultInstance();
+        } else {
+          if (cardCase_ == 3) {
+            return componentCardBuilder_.getMessage();
+          }
+          return ProtoMessages.ComponentCardOuterClass.ComponentCard.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.ProtoMessages.ComponentCard componentCard = 3;</code>
+       */
+      public Builder setComponentCard(ProtoMessages.ComponentCardOuterClass.ComponentCard value) {
+        if (componentCardBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          card_ = value;
+          onChanged();
+        } else {
+          componentCardBuilder_.setMessage(value);
+        }
+        cardCase_ = 3;
+        return this;
+      }
+      /**
+       * <code>.ProtoMessages.ComponentCard componentCard = 3;</code>
+       */
+      public Builder setComponentCard(
+          ProtoMessages.ComponentCardOuterClass.ComponentCard.Builder builderForValue) {
+        if (componentCardBuilder_ == null) {
+          card_ = builderForValue.build();
+          onChanged();
+        } else {
+          componentCardBuilder_.setMessage(builderForValue.build());
+        }
+        cardCase_ = 3;
+        return this;
+      }
+      /**
+       * <code>.ProtoMessages.ComponentCard componentCard = 3;</code>
+       */
+      public Builder mergeComponentCard(ProtoMessages.ComponentCardOuterClass.ComponentCard value) {
+        if (componentCardBuilder_ == null) {
+          if (cardCase_ == 3 &&
+              card_ != ProtoMessages.ComponentCardOuterClass.ComponentCard.getDefaultInstance()) {
+            card_ = ProtoMessages.ComponentCardOuterClass.ComponentCard.newBuilder((ProtoMessages.ComponentCardOuterClass.ComponentCard) card_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            card_ = value;
+          }
+          onChanged();
+        } else {
+          if (cardCase_ == 3) {
+            componentCardBuilder_.mergeFrom(value);
+          } else {
+            componentCardBuilder_.setMessage(value);
+          }
+        }
+        cardCase_ = 3;
+        return this;
+      }
+      /**
+       * <code>.ProtoMessages.ComponentCard componentCard = 3;</code>
+       */
+      public Builder clearComponentCard() {
+        if (componentCardBuilder_ == null) {
+          if (cardCase_ == 3) {
+            cardCase_ = 0;
+            card_ = null;
+            onChanged();
+          }
+        } else {
+          if (cardCase_ == 3) {
+            cardCase_ = 0;
+            card_ = null;
+          }
+          componentCardBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.ProtoMessages.ComponentCard componentCard = 3;</code>
+       */
+      public ProtoMessages.ComponentCardOuterClass.ComponentCard.Builder getComponentCardBuilder() {
+        return internalGetComponentCardFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.ProtoMessages.ComponentCard componentCard = 3;</code>
+       */
+      @java.lang.Override
+      public ProtoMessages.ComponentCardOuterClass.ComponentCardOrBuilder getComponentCardOrBuilder() {
+        if ((cardCase_ == 3) && (componentCardBuilder_ != null)) {
+          return componentCardBuilder_.getMessageOrBuilder();
+        } else {
+          if (cardCase_ == 3) {
+            return (ProtoMessages.ComponentCardOuterClass.ComponentCard) card_;
+          }
+          return ProtoMessages.ComponentCardOuterClass.ComponentCard.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.ProtoMessages.ComponentCard componentCard = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          ProtoMessages.ComponentCardOuterClass.ComponentCard, ProtoMessages.ComponentCardOuterClass.ComponentCard.Builder, ProtoMessages.ComponentCardOuterClass.ComponentCardOrBuilder> 
+          internalGetComponentCardFieldBuilder() {
+        if (componentCardBuilder_ == null) {
+          if (!(cardCase_ == 3)) {
+            card_ = ProtoMessages.ComponentCardOuterClass.ComponentCard.getDefaultInstance();
+          }
+          componentCardBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              ProtoMessages.ComponentCardOuterClass.ComponentCard, ProtoMessages.ComponentCardOuterClass.ComponentCard.Builder, ProtoMessages.ComponentCardOuterClass.ComponentCardOrBuilder>(
+                  (ProtoMessages.ComponentCardOuterClass.ComponentCard) card_,
+                  getParentForChildren(),
+                  isClean());
+          card_ = null;
+        }
+        cardCase_ = 3;
+        onChanged();
+        return componentCardBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:ProtoMessages.CardWrapper)
@@ -587,21 +1153,32 @@ public final class CardWrapperProto extends com.google.protobuf.GeneratedFile {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\021CardWrapper.proto\022\rProtoMessages\"\033\n\013Ca" +
-      "rdWrapper\022\014\n\004name\030\001 \001(\tB\022B\020CardWrapperPr" +
-      "oto"
+      "\n\021CardWrapper.proto\022\rProtoMessages\032\020Scri" +
+      "ptCard.proto\032\020DeviceCard.proto\032\023Componen" +
+      "tCard.proto\"\256\001\n\013CardWrapper\022/\n\nscriptCar" +
+      "d\030\001 \001(\0132\031.ProtoMessages.ScriptCardH\000\022/\n\n" +
+      "deviceCard\030\002 \001(\0132\031.ProtoMessages.DeviceC" +
+      "ardH\000\0225\n\rcomponentCard\030\003 \001(\0132\034.ProtoMess" +
+      "ages.ComponentCardH\000B\006\n\004cardB\022B\020CardWrap" +
+      "perProto"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          ProtoMessages.ScriptCardOuterClass.getDescriptor(),
+          ProtoMessages.DeviceCardOuterClass.getDescriptor(),
+          ProtoMessages.ComponentCardOuterClass.getDescriptor(),
         });
     internal_static_ProtoMessages_CardWrapper_descriptor =
       getDescriptor().getMessageType(0);
     internal_static_ProtoMessages_CardWrapper_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ProtoMessages_CardWrapper_descriptor,
-        new java.lang.String[] { "Name", });
+        new java.lang.String[] { "ScriptCard", "DeviceCard", "ComponentCard", "Card", });
     descriptor.resolveAllFeaturesImmutable();
+    ProtoMessages.ScriptCardOuterClass.getDescriptor();
+    ProtoMessages.DeviceCardOuterClass.getDescriptor();
+    ProtoMessages.ComponentCardOuterClass.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)
