@@ -1,7 +1,6 @@
-package ApplicationFX;
+package main.java.ApplicationFX;
 
-import ProtoMessages.*;
-import ProtoMessages.CardWrapperProto.CardWrapper;
+
 import javafx.scene.layout.*;
 
 public abstract class GeneralCard extends VBox{

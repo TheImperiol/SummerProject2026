@@ -1,0 +1,9 @@
+syntax = "proto2";
+
+package ProtoMessages;
+
+option java_outer_classname = "CardWrapperProto";
+
+message CardWrapper {
+    optional string name = 1;
+}

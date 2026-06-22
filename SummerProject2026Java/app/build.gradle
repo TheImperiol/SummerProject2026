@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    // This plugin automates downloading the compiler and generating Java files
+    id 'com.google.protobuf' version '0.9.4'
+}
+
+group = 'com.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral() // Tells Gradle to download libraries from the internet
+}
+
+dependencies {
+    // The core Java runtime library your project was missing
+    implementation 'com.google.protobuf:protobuf-java:3.25.1'
+}
+
+protobuf {
+    protoc {
+        // Automatically downloads the exact compiler version needed
+        artifact = "com.google.protobuf:protoc:3.25.1"
+    }
+    generateProtoTasks {
+        all().each { task ->
+            // Configures standard Java source generation code tasks
+        }
+    }
+}
+
+// Ensures your IDE can easily find the Java files Gradle generates
+sourceSets {
+    main {
+        java {
+            srcDirs 'app/src/main/java'
+            srcDirs 'app/build/generated/source/proto/main/java'
+        }
+    }
+}
