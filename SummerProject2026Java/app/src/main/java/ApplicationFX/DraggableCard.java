@@ -37,12 +37,7 @@ public abstract class DraggableCard extends GeneralCard implements Serializable{
         position[1] = y;
     }
 
-    public void StoreChildren(){
-        for( Object x : getChildren().toArray()){
-            children.add((Control) x);
-        }
-        System.out.println(children.size());
-    }
+    
 
     public DraggableCard(float x, float y){
         super();
@@ -56,7 +51,6 @@ public abstract class DraggableCard extends GeneralCard implements Serializable{
                 Dragboard db = startDragAndDrop(TransferMode.ANY);
                 Clipboard clipboard = Clipboard.getSystemClipboard();
                 ClipboardContent content = new ClipboardContent();
-                StoreChildren();
 
                 try(ByteArrayOutputStream bytStream = new ByteArrayOutputStream();
                     ObjectOutputStream objStream = new ObjectOutputStream(bytStream)){

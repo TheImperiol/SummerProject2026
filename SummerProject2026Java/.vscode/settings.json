@@ -19,5 +19,6 @@
         "exclude": [
             "c:\\jdk-26.0.1\\javafx-sdk-26.0.1\\lib\\javafx-swt.jar"
         ]
-    }
+    },
+    "java.configuration.updateBuildConfiguration": "interactive"
 }

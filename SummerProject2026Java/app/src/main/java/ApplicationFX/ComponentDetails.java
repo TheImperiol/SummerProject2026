@@ -1,4 +1,4 @@
-package main.java.ApplicationFX;
+package ApplicationFX;
 
 public class ComponentDetails {
     
