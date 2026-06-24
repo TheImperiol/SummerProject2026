@@ -25,7 +25,7 @@ public class Structure extends GridPane {
         gpEmulator = new GridPane();
         gpAppTopBar = new GridPane();
 
-        gpEmulator.setOnDragOver(new EventHandler<DragEvent>() {
+        emulatorWindow.setOnDragOver(new EventHandler<DragEvent>() {
             @Override public void handle(DragEvent event) {
                 Dragboard db = event.getDragboard();
                 if (db.hasString()) {
@@ -35,7 +35,7 @@ public class Structure extends GridPane {
             }
         });
 
-        gpEmulator.setOnDragDropped(new EventHandler<DragEvent>() {
+        emulatorWindow.setOnDragDropped(new EventHandler<DragEvent>() {
             @Override public void handle(DragEvent event) {
                 Dragboard db = event.getDragboard();
                 Clipboard clipboard = Clipboard.getSystemClipboard();
