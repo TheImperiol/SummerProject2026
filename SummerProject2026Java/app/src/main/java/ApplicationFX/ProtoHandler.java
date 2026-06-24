@@ -1,5 +1,6 @@
 package ApplicationFX;
 
+import ProtoMessages.*;
 import ProtoMessages.CardWrapperProto.*;
 
 public final class ProtoHandler {
@@ -10,14 +11,26 @@ public final class ProtoHandler {
     public static void WrapperHandler(CardWrapper wrapper){
         switch(wrapper.getCardCase()){
             case DEVICECARD:
-                System.out.println("device");
+                DeviceHandler(wrapper.getDeviceCard());
                 break;
             case SCRIPTCARD:
-                System.out.println("script");
+                ScriptHandler(wrapper.getScriptCard());
                 break;
             case COMPONENTCARD:
-                System.out.println("component");
+                ComponentHandler(wrapper.getComponentCard());
                 break;
         }
+    }
+
+    private static void DeviceHandler(DeviceCardOuterClass.DeviceCard card){
+        System.out.println("Device from handler");
+    }
+
+    private static void ScriptHandler(ScriptCardOuterClass.ScriptCard card){
+        System.out.println("Script from handler");
+    }
+
+    private static void ComponentHandler(ComponentCardOuterClass.ComponentCard card){
+        System.out.println("Component from handler");
     }
 }
