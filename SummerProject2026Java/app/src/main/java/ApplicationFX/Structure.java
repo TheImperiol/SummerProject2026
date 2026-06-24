@@ -6,6 +6,8 @@ import java.util.Base64;
 import ProtoMessages.CardWrapperProto.CardWrapper;
 import javafx.event.*;
 import javafx.scene.input.*;
+import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 
@@ -15,6 +17,7 @@ public class Structure extends GridPane {
     GridPane gpSidebar;
     GridPane gpSidebarContent;
     GridPane gpEmulator;
+    Pane emulatorWindow = new Pane();
     public Structure(){
         gpMain = new GridPane();
         gpSidebar = new GridPane();
@@ -45,6 +48,9 @@ public class Structure extends GridPane {
                     ObjectInputStream objStream = new ObjectInputStream(bytStream)){
                         CardWrapper deserializDraggableCard = (CardWrapper) objStream.readObject();
                         ProtoHandler.WrapperHandler(deserializDraggableCard);
+                        Label testDrop = new Label("drop");
+                        testDrop.relocate(event.getX(),event.getY());
+                        emulatorWindow.getChildren().add(testDrop);
                     } catch (IOException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -59,6 +65,8 @@ public class Structure extends GridPane {
         });
 
         
+
+        gpEmulator.add(emulatorWindow,0,0);
 
         gpAppTopBar.setGridLinesVisible(true);
         gpMain.setGridLinesVisible(true);
