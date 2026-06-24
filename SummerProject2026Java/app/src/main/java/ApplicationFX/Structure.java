@@ -44,7 +44,7 @@ public class Structure extends GridPane {
                     try(ByteArrayInputStream bytStream = new ByteArrayInputStream(bytes);
                     ObjectInputStream objStream = new ObjectInputStream(bytStream)){
                         CardWrapper deserializDraggableCard = (CardWrapper) objStream.readObject();
-                        System.out.println("Testing Protobuf: " + deserializDraggableCard.getDeviceCard().getName());
+                        ProtoHandler.WrapperHandler(deserializDraggableCard);
                     } catch (IOException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
