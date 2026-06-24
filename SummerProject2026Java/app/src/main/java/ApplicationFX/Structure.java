@@ -3,6 +3,7 @@ package ApplicationFX;
 import java.io.*;
 import java.util.Base64;
 
+import ProtoMessages.CardWrapperProto.CardWrapper;
 import javafx.event.*;
 import javafx.scene.input.*;
 import javafx.scene.control.*;
@@ -42,11 +43,8 @@ public class Structure extends GridPane {
                     final byte[] bytes = Base64.getDecoder().decode(clipboard.getString());
                     try(ByteArrayInputStream bytStream = new ByteArrayInputStream(bytes);
                     ObjectInputStream objStream = new ObjectInputStream(bytStream)){
-                        DraggableCard deserializDraggableCard = (DraggableCard) objStream.readObject();
-                        System.out.println("Size upon reception: " + deserializDraggableCard.children.size());
-                        GridPane.setFillHeight(deserializDraggableCard,false);
-                        GridPane.setFillWidth(deserializDraggableCard,false);
-                        gpEmulator.add(deserializDraggableCard, 0,0);
+                        CardWrapper deserializDraggableCard = (CardWrapper) objStream.readObject();
+                        System.out.println("Testing Protobuf: " + deserializDraggableCard.getDeviceCard().getName());
                     } catch (IOException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();

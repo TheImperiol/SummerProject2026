@@ -54,7 +54,7 @@ public abstract class DraggableCard extends GeneralCard implements Serializable{
 
                 try(ByteArrayOutputStream bytStream = new ByteArrayOutputStream();
                     ObjectOutputStream objStream = new ObjectOutputStream(bytStream)){
-                    objStream.writeObject(GetCard());
+                    objStream.writeObject(wrapper);
                     content.putString(Base64.getEncoder().encodeToString(bytStream.toByteArray()));
                 } catch (IOException e) {
                     // TODO Auto-generated catch block
