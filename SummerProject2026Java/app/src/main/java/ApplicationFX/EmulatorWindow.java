@@ -7,15 +7,19 @@ import java.util.Base64;
 
 import ProtoMessages.CardWrapperProto.CardWrapper;
 import javafx.event.EventHandler;
+import javafx.geometry.Point2D;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
+import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.Pane;
 
 public class EmulatorWindow extends Pane {
+    private Point2D previousDragPos;
+
     public EmulatorWindow(){
         this.setOnDragOver(new EventHandler<DragEvent>() {
             @Override public void handle(DragEvent event) {
@@ -66,8 +70,15 @@ public class EmulatorWindow extends Pane {
 
         this.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override public void handle(MouseEvent event){
-                System.out.println("mouse dragged");
-                
+                getSelf().getChildren().forEach(node -> {node.relocate(node.getLayoutX() + (event.getSceneX() - previousDragPos.getX()), node.getLayoutY() + (event.getSceneY() - previousDragPos.getY()));});
+                previousDragPos = new Point2D(event.getSceneX(),event.getSceneY());
+            }
+        });
+
+        this.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override public void handle(MouseEvent event){
+                System.out.println("dragging: ");
+                previousDragPos = new Point2D(event.getSceneX(),event.getSceneY());
             }
         });
     }
