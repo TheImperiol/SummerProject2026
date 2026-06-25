@@ -7,13 +7,13 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 public class MainSummerApp extends Application{
-   
 
+    public static MainSummerApp app;
+    public Structure frontend = new Structure();
     @Override
     public void start(Stage stage) throws Exception {
         VBox vBox = new VBox();
         
-        Structure frontend = new Structure();
         Separator sep = new Separator();
         //VBox.setVgrow(frontend.gpAppTopBar, Priority.ALWAYS );
 
@@ -32,6 +32,10 @@ public class MainSummerApp extends Application{
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public MainSummerApp(){
+        app = this;
     }
 
 }

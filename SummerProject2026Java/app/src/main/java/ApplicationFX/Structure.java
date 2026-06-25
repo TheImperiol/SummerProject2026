@@ -48,9 +48,9 @@ public class Structure extends GridPane {
                     ObjectInputStream objStream = new ObjectInputStream(bytStream)){
                         CardWrapper deserializDraggableCard = (CardWrapper) objStream.readObject();
                         ProtoHandler.WrapperHandler(deserializDraggableCard);
-                        Label testDrop = new Label("drop");
-                        testDrop.relocate(event.getX(),event.getY());
-                        emulatorWindow.getChildren().add(testDrop);
+                        //Label testDrop = new Label("drop");
+                        //testDrop.relocate(event.getX(),event.getY());
+                        //emulatorWindow.getChildren().add(testDrop);
                     } catch (IOException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();

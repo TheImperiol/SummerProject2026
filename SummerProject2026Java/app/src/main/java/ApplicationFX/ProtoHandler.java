@@ -2,6 +2,12 @@ package ApplicationFX;
 
 import ProtoMessages.*;
 import ProtoMessages.CardWrapperProto.*;
+import javafx.application.Application;
+import javafx.event.EventHandler;
+import javafx.geometry.Point2D;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.robot.Robot;
 
 public final class ProtoHandler {
     private ProtoHandler(){
@@ -28,6 +34,12 @@ public final class ProtoHandler {
 
     private static void ScriptHandler(ScriptCardOuterClass.ScriptCard card){
         System.out.println("Script from handler");
+        ScriptCard script = new ScriptCard(0, 0);
+        Robot robot = new Robot();
+        Point2D mousePos = robot.getMousePosition();
+        Point2D localPos = MainSummerApp.app.frontend.emulatorWindow.screenToLocal(mousePos);
+        script.relocate(localPos.getX(),localPos.getY());
+        MainSummerApp.app.frontend.emulatorWindow.getChildren().add(script);
     }
 
     private static void ComponentHandler(ComponentCardOuterClass.ComponentCard card){

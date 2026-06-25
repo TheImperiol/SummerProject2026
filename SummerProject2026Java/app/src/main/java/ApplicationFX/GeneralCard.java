@@ -12,7 +12,7 @@ public abstract class GeneralCard extends VBox{
                    "-fx-border-width: 2;\n" +
                    "-fx-border-color: black";
 
-    CardWrapper wrapper = CardWrapper.newBuilder().setDeviceCard(ProtoMessages.DeviceCardOuterClass.DeviceCard.newBuilder().setName("test").build()).build();
+    CardWrapper wrapper = CardWrapper.newBuilder().setScriptCard(ProtoMessages.ScriptCardOuterClass.ScriptCard.newBuilder().setName("test").build()).build();
 
     public String GetCardTitle(){
         return cardTitle;
