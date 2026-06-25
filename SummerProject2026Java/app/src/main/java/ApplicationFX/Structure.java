@@ -17,54 +17,13 @@ public class Structure extends GridPane {
     GridPane gpSidebar;
     GridPane gpSidebarContent;
     GridPane gpEmulator;
-    Pane emulatorWindow = new Pane();
+    EmulatorWindow emulatorWindow = new EmulatorWindow();
     public Structure(){
         gpMain = new GridPane();
         gpSidebar = new GridPane();
         gpSidebarContent = new GridPane();
         gpEmulator = new GridPane();
         gpAppTopBar = new GridPane();
-
-        emulatorWindow.setOnDragOver(new EventHandler<DragEvent>() {
-            @Override public void handle(DragEvent event) {
-                Dragboard db = event.getDragboard();
-                if (db.hasString()) {
-                    event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
-                }
-            event.consume();
-            }
-        });
-
-        emulatorWindow.setOnDragDropped(new EventHandler<DragEvent>() {
-            @Override public void handle(DragEvent event) {
-                Dragboard db = event.getDragboard();
-                Clipboard clipboard = Clipboard.getSystemClipboard();
-                boolean success = false;
-                if( clipboard.hasString()){
-                    System.out.println("Dropped: "+ clipboard.getString());
-                    success = true;
-                    final byte[] bytes = Base64.getDecoder().decode(clipboard.getString());
-                    try(ByteArrayInputStream bytStream = new ByteArrayInputStream(bytes);
-                    ObjectInputStream objStream = new ObjectInputStream(bytStream)){
-                        CardWrapper deserializDraggableCard = (CardWrapper) objStream.readObject();
-                        ProtoHandler.WrapperHandler(deserializDraggableCard);
-                        //Label testDrop = new Label("drop");
-                        //testDrop.relocate(event.getX(),event.getY());
-                        //emulatorWindow.getChildren().add(testDrop);
-                    } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                } catch (ClassNotFoundException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                }
-                event.setDropCompleted(success);
-                event.consume();
-            }
-        });
-
-        
 
         gpEmulator.add(emulatorWindow,0,0);
 
