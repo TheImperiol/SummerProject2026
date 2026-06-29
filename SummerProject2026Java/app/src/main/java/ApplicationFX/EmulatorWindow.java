@@ -8,6 +8,7 @@ import java.util.Base64;
 import ProtoMessages.CardWrapperProto.CardWrapper;
 import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
+import javafx.scene.Scene;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
@@ -15,12 +16,24 @@ import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.input.TransferMode;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class EmulatorWindow extends Pane {
     private Point2D previousDragPos;
 
-    public EmulatorWindow(){
+    public EmulatorWindow(double _width, double _height){
+        this.setHeight(_height);
+        this.setWidth(_width);
+        Pane PCB = new Pane();
+        PCB.setPrefSize(200, 200);
+        System.out.println(_height / 2 + " " + _width/2);
+        PCB.relocate(_height / 2, _width/2);
+        PCB.setStyle("-fx-background-color: #0B6623");
+        this.getChildren().add(PCB);
+
         this.setOnDragOver(new EventHandler<DragEvent>() {
             @Override public void handle(DragEvent event) {
                 Dragboard db = event.getDragboard();
@@ -63,8 +76,6 @@ public class EmulatorWindow extends Pane {
             @Override public void handle(ScrollEvent event){
                 getSelf().setScaleX(getSelf().getScaleY() +  (event.getDeltaY() / (Math.abs(event.getDeltaY()) * 10)));
                 getSelf().setScaleY(getSelf().getScaleY() +  (event.getDeltaY() / (Math.abs(event.getDeltaY()) * 10)));
-                System.out.println(getSelf().getScaleX() + (event.getDeltaY() / (Math.abs(event.getDeltaY()) * 10)));
-                System.out.println(getSelf().getScaleY() +  (event.getDeltaY() / (Math.abs(event.getDeltaY()) * 10)));
             }
         });
 
@@ -82,6 +93,8 @@ public class EmulatorWindow extends Pane {
             }
         });
     }
+
+
 
     private EmulatorWindow getSelf(){return this;}
 

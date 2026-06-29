@@ -10,6 +10,8 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
 public class Structure extends GridPane {
     GridPane gpAppTopBar;
@@ -17,7 +19,7 @@ public class Structure extends GridPane {
     GridPane gpSidebar;
     GridPane gpSidebarContent;
     GridPane gpEmulator;
-    EmulatorWindow emulatorWindow = new EmulatorWindow();
+    EmulatorWindow emulatorWindow;
     public Structure(){
         gpMain = new GridPane();
         gpSidebar = new GridPane();
@@ -25,7 +27,7 @@ public class Structure extends GridPane {
         gpEmulator = new GridPane();
         gpAppTopBar = new GridPane();
 
-        gpEmulator.add(emulatorWindow,0,0);
+        
 
         gpAppTopBar.setGridLinesVisible(true);
         gpMain.setGridLinesVisible(true);
@@ -86,5 +88,10 @@ public class Structure extends GridPane {
         gpMain.add(gpSidebar,0,0);
         gpMain.add(gpEmulator, 1, 0);
         gpAppTopBar.add(gpMain,0,1);
+
+        Window stage = Stage.getWindows().stream().filter(Window::isShowing).findFirst().get();
+        System.out.println((gpAppTopBar.getRowConstraints().get(1).getPercentHeight() / 100) * (gpEmulator.getRowConstraints().get(0).getPercentHeight() / 100));
+        emulatorWindow = new EmulatorWindow(stage.getHeight()* ((gpAppTopBar.getRowConstraints().get(1).getPercentHeight() / 100) * (gpEmulator.getRowConstraints().get(0).getPercentHeight() / 100)),stage.getWidth() * 0.8);
+        gpEmulator.add(emulatorWindow,0,0);
     }
 }

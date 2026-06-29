@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class MainSummerApp extends Application{
 
     public static MainSummerApp app;
-    public Structure frontend = new Structure();
+    public Structure frontend;
     @Override
     public void start(Stage stage) throws Exception {
         VBox vBox = new VBox();
@@ -19,15 +19,19 @@ public class MainSummerApp extends Application{
 
         ScriptCard card = new ScriptCard(0.87888888888888888f, 8.78f);
         //DeviceCard devCard = new DeviceCard("Device", "desc");
-        frontend.gpSidebarContent.add(card, 0, 0);
-
-        vBox.getChildren().addAll(frontend.gpAppTopBar,sep);
+        
+        
+        
 
         Scene mainScene = new Scene(vBox);
         stage.setScene(mainScene);
         stage.setHeight(800);
         stage.setWidth(1200);
         stage.show();
+        
+        frontend = new Structure();
+        frontend.gpSidebarContent.add(card, 0, 0);
+        vBox.getChildren().addAll(frontend.gpAppTopBar,sep);
     }
 
     public static void main(String[] args) {
