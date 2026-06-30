@@ -13,25 +13,32 @@ public class MainSummerApp extends Application{
     @Override
     public void start(Stage stage) throws Exception {
         VBox vBox = new VBox();
-        
+
         Separator sep = new Separator();
-        //VBox.setVgrow(frontend.gpAppTopBar, Priority.ALWAYS );
+        frontend = new Structure(stage);
+
 
         ScriptCard card = new ScriptCard(0.87888888888888888f, 8.78f);
         //DeviceCard devCard = new DeviceCard("Device", "desc");
         
         
+        //frontend.gpSidebarContent.add(card, 0, 0);
+        vBox.getChildren().addAll(frontend,sep);
+        VBox.setVgrow(frontend, Priority.ALWAYS );
         
+        System.out.println("frontend height and width: " + frontend.getHeight() + " " + frontend.getWidth());
 
         Scene mainScene = new Scene(vBox);
         stage.setScene(mainScene);
-        stage.setHeight(800);
-        stage.setWidth(1200);
+        //stage.setHeight(800);
+        //stage.setWidth(1200);
+        stage.sizeToScene();
         stage.show();
+
+
+
+       
         
-        frontend = new Structure();
-        frontend.gpSidebarContent.add(card, 0, 0);
-        vBox.getChildren().addAll(frontend.gpAppTopBar,sep);
     }
 
     public static void main(String[] args) {
