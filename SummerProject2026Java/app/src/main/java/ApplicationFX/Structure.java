@@ -120,12 +120,13 @@ public class Structure extends GridPane {
         gpMain.getRowConstraints().addAll(sidebarRowFilling);
 
         gpSidebarContent.getColumnConstraints().addAll(sidebarColumnDevices, sidebarColumnComponents, sidebarColumnScripts);
-        gpSidebarContent.getRowConstraints().addAll(sidebarRowTabs,sidebarRowContent );
+        gpSidebarContent.getRowConstraints().addAll(sidebarRowFilling );
 
         gpEmulator.getColumnConstraints().add(sidebarColumnFilling);
         gpEmulator.getRowConstraints().addAll(mainRowContents,mainRowTerminal);
 
         gpSidebar.getColumnConstraints().add(sidebarColumnFilling);
+        gpSidebar.getRowConstraints().addAll(sidebarRowTabs,sidebarRowContent);
         gpSidebar.add(gpSidebarContent,0,0);
 
         gpMain.add(gpSidebar,0,0);
