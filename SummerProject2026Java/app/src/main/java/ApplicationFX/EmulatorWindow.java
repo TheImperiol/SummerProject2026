@@ -9,6 +9,7 @@ import ProtoMessages.CardWrapperProto.CardWrapper;
 import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
@@ -19,20 +20,45 @@ import javafx.scene.input.TransferMode;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class EmulatorWindow extends Pane {
     private Point2D previousDragPos;
+    private DeviceCard device;
+
+    public void SetDevice(DeviceCard openedDevice){
+        device = openedDevice;
+        this.getChildren().clear();
+        UpdateWindow();
+    }
+
+    public void EmptyDevice(){
+        device = null;
+        this.getChildren().clear();
+        UpdateWindow();
+    }
+
+    private void UpdateWindow(){
+        if(device != null){
+            // Stuff
+        }
+        else{
+            Label placeholder = new Label("No Device currently opened");
+            placeholder.setFont(new Font(30.0));
+            this.getChildren().add(placeholder);
+        }
+    }
 
     public EmulatorWindow(double _width, double _height){
         this.setHeight(_height);
         this.setWidth(_width);
-        Pane PCB = new Pane();
-        PCB.setPrefSize(200, 200);
+        //Pane PCB = new Pane();
+        //PCB.setPrefSize(200, 200);
         System.out.println(_height / 2 + " " + _width/2);
-        PCB.relocate(_height / 2, _width/2);
-        PCB.setStyle("-fx-background-color: #0B6623");
-        this.getChildren().add(PCB);
+        //PCB.relocate(_height / 2, _width/2);
+        //PCB.setStyle("-fx-background-color: #0B6623");
+        //this.getChildren().add(PCB);
 
         this.setOnDragOver(new EventHandler<DragEvent>() {
             @Override public void handle(DragEvent event) {
@@ -70,6 +96,7 @@ public class EmulatorWindow extends Pane {
                 event.setDropCompleted(success);
                 event.consume();
             }
+
         });
 
         this.setOnScroll(new EventHandler<ScrollEvent>(){
@@ -92,6 +119,9 @@ public class EmulatorWindow extends Pane {
                 previousDragPos = new Point2D(event.getSceneX(),event.getSceneY());
             }
         });
+
+        UpdateWindow();
+
     }
 
 

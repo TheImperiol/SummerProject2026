@@ -7,6 +7,9 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
 public class DeviceCard extends GeneralCard {
+    private DeviceCard GetSelf(){
+        return this;
+    }
     public DeviceCard(String title, String description){
         super();
         cardTitle = title;
@@ -21,6 +24,7 @@ public class DeviceCard extends GeneralCard {
                 if(event.getButton().equals(MouseButton.PRIMARY)){
                     if(event.getClickCount() == 2){
                         System.out.println("double clicked");
+                        MainSummerApp.app.frontend.emulatorWindow.SetDevice(GetSelf());
                     }
                 }
             }
