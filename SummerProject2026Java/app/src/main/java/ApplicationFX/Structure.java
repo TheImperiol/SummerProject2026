@@ -140,5 +140,14 @@ public class Structure extends GridPane {
         gpEmulator.add(emulatorWindow,0,0);
         gpAppTopBar.setMaxWidth(Double.MAX_VALUE);
         gpAppTopBar.setMaxHeight(Double.MAX_VALUE);
+
+        Button closure = new Button();
+        closure.setOnAction(new EventHandler<ActionEvent>(){
+            @Override public void handle(ActionEvent event){
+                System.out.println("close");
+                emulatorWindow.EmptyDevice();
+            }
+        });
+        gpAppTopBar.getChildren().add(closure);
     }
 }
