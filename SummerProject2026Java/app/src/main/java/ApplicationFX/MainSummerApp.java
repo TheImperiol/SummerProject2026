@@ -1,6 +1,8 @@
 package ApplicationFX;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import javafx.application.*;
 import javafx.scene.control.*;
@@ -14,6 +16,7 @@ public class MainSummerApp extends Application{
 
     public static MainSummerApp app;
     public Structure frontend;
+    public FileSystem fileSystem;
     @Override
     public void start(Stage stage) throws Exception {
         VBox vBox = new VBox();
@@ -40,13 +43,18 @@ public class MainSummerApp extends Application{
         //stage.setWidth(1200);
         stage.sizeToScene();
         stage.show();
-
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add( new ExtensionFilter("PNG", "*.png"));
-        fileChooser.setTitle("Open Resource File");
-        File chosenFile = fileChooser.showOpenDialog(stage);
-        System.out.println(chosenFile.getPath());
-       
+        ArrayList<ExtensionFilter> fil = new ArrayList<ExtensionFilter>();
+        fil.add(new ExtensionFilter("PNG", "*.png"));
+        File chosenFile = FileSystem.OpenExplorer(
+            "Testing singleton",
+             stage,
+             fil);
+        if(chosenFile != null){
+            System.out.println(chosenFile.getPath());
+        }
+        else{
+            System.out.println("error in file system occoured");
+        }
         
     }
 
