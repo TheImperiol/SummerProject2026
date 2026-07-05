@@ -141,13 +141,18 @@ public class Structure extends GridPane {
         gpAppTopBar.setMaxWidth(Double.MAX_VALUE);
         gpAppTopBar.setMaxHeight(Double.MAX_VALUE);
 
-        Button closure = new Button();
+        /*Button closure = new Button();
         closure.setOnAction(new EventHandler<ActionEvent>(){
             @Override public void handle(ActionEvent event){
                 System.out.println("close");
                 emulatorWindow.EmptyDevice();
             }
         });
+        
         gpAppTopBar.getChildren().add(closure);
+        */
+
+        
+        gpAppTopBar.getChildren().add(new FileMenu());
     }
 }

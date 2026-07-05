@@ -16,7 +16,6 @@ public class MainSummerApp extends Application{
 
     public static MainSummerApp app;
     public Structure frontend;
-    public FileSystem fileSystem;
     @Override
     public void start(Stage stage) throws Exception {
         VBox vBox = new VBox();
