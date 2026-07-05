@@ -114,6 +114,7 @@ public class EmulatorWindow extends Pane {
         });
 
         this.setOnMousePressed(new EventHandler<MouseEvent>() {
+            
             @Override public void handle(MouseEvent event){
                 System.out.println("dragging: ");
                 previousDragPos = new Point2D(event.getSceneX(),event.getSceneY());

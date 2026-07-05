@@ -1,10 +1,14 @@
 package ApplicationFX;
 
+import java.io.File;
+
 import javafx.application.*;
 import javafx.scene.control.*;
 import javafx.scene.Scene;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 public class MainSummerApp extends Application{
 
@@ -37,8 +41,11 @@ public class MainSummerApp extends Application{
         stage.sizeToScene();
         stage.show();
 
-
-
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add( new ExtensionFilter("PNG", "*.png"));
+        fileChooser.setTitle("Open Resource File");
+        File chosenFile = fileChooser.showOpenDialog(stage);
+        System.out.println(chosenFile.getPath());
        
         
     }
