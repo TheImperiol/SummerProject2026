@@ -38,11 +38,12 @@ public class MainSummerApp extends Application{
 
         Scene mainScene = new Scene(vBox);
         stage.setScene(mainScene);
+        stage.setTitle("Electronics Emulator");
         //stage.setHeight(800);
         //stage.setWidth(1200);
         stage.sizeToScene();
         stage.show();
-        ArrayList<ExtensionFilter> fil = new ArrayList<ExtensionFilter>();
+        /*ArrayList<ExtensionFilter> fil = new ArrayList<ExtensionFilter>();
         fil.add(new ExtensionFilter("PNG", "*.png"));
         File chosenFile = FileSystem.OpenExplorer(
             "Testing singleton",
@@ -53,7 +54,7 @@ public class MainSummerApp extends Application{
         }
         else{
             System.out.println("error in file system occoured");
-        }
+        }*/
         
     }
 
