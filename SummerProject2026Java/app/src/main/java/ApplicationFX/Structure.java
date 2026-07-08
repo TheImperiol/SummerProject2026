@@ -20,6 +20,8 @@ public class Structure extends GridPane {
     GridPane gpSidebarContent;
     GridPane gpEmulator;
     EmulatorWindow emulatorWindow;
+
+    
     public Structure(Stage mainStage){
 
         this.setMaxHeight(Double.MAX_VALUE);
@@ -152,6 +154,55 @@ public class Structure extends GridPane {
         gpAppTopBar.getChildren().add(closure);
         */
 
+        Button devices = new Button("Devices");
+        Button scripts = new Button("Scripts");
+        Button components = new Button("Components");
+
+        StackPane devicesPane = new StackPane();
+        StackPane scriptsPane = new StackPane();
+        StackPane componentsPane = new StackPane(); 
+
+        
+
+        devices.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent event){
+                devicesPane.setVisible(true);
+                componentsPane.setVisible(false);
+                scriptsPane.setVisible(false);
+            }
+        });
+
+        scripts.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent event){
+                devicesPane.setVisible(false);
+                componentsPane.setVisible(false);
+                scriptsPane.setVisible(true);
+            }
+        });
+
+        components.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent event){
+                devicesPane.setVisible(false);
+                componentsPane.setVisible(true);
+                scriptsPane.setVisible(false);
+            }
+        });
+
+        devicesPane.setVisible(false);
+        scriptsPane.setVisible(false);
+        componentsPane.setVisible(false);
+
+        devicesPane.getChildren().add(new Label("test labelD"));
+        scriptsPane.getChildren().add(new Label("test labelS"));
+        componentsPane.getChildren().add(new Label("test labelC"));
+
+
+        gpSidebarContent.add(devices,0,0);
+        gpSidebarContent.add(scripts,1,0);
+        gpSidebarContent.add(components,2,0);
+        gpSidebar.add(devicesPane,0,1);
+        gpSidebar.add(scriptsPane,0,1);
+        gpSidebar.add(componentsPane,0,1);
         
         gpAppTopBar.getChildren().add(new FileMenu());
     }
