@@ -21,6 +21,11 @@ public class Structure extends GridPane {
     GridPane gpEmulator;
     EmulatorWindow emulatorWindow;
 
+    private StackPane devicesPane;
+
+    public void AddDeviceToStack(DeviceCard card){
+        gpSidebar.add(card,0,1);
+    }
     
     public Structure(Stage mainStage){
 
@@ -158,11 +163,10 @@ public class Structure extends GridPane {
         Button scripts = new Button("Scripts");
         Button components = new Button("Components");
 
-        StackPane devicesPane = new StackPane();
+        devicesPane = new StackPane();
         StackPane scriptsPane = new StackPane();
         StackPane componentsPane = new StackPane(); 
 
-        
 
         devices.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent event){
@@ -188,11 +192,11 @@ public class Structure extends GridPane {
             }
         });
 
-        devicesPane.setVisible(false);
+        devicesPane.setVisible(true);
         scriptsPane.setVisible(false);
         componentsPane.setVisible(false);
 
-        devicesPane.getChildren().add(new Label("test labelD"));
+        //devicesPane.getChildren().add(new Label("test labelD"));
         scriptsPane.getChildren().add(new Label("test labelS"));
         componentsPane.getChildren().add(new Label("test labelC"));
 

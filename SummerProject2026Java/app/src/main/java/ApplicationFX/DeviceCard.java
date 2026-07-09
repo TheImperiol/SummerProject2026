@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Region;
 
 public class DeviceCard extends GeneralCard {
     private DeviceCard GetSelf(){
@@ -12,6 +13,7 @@ public class DeviceCard extends GeneralCard {
     }
     public DeviceCard(String title, String description){
         super();
+        this.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
         cardTitle = title;
         cardDescription = description;
         Label titleLabel = new Label(cardTitle);
