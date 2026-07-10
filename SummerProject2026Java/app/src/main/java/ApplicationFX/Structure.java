@@ -1,15 +1,18 @@
 package ApplicationFX;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Base64;
 
 import ProtoMessages.CardWrapperProto.CardWrapper;
 import javafx.event.*;
+import javafx.geometry.Insets;
 import javafx.scene.input.*;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
@@ -21,10 +24,10 @@ public class Structure extends GridPane {
     GridPane gpEmulator;
     EmulatorWindow emulatorWindow;
 
-    private StackPane devicesPane;
+    private VBox devicesPane;
 
     public void AddDeviceToStack(DeviceCard card){
-        gpSidebar.add(card,0,1);
+        devicesPane.getChildren().add(card);
     }
     
     public Structure(Stage mainStage){
@@ -163,7 +166,7 @@ public class Structure extends GridPane {
         Button scripts = new Button("Scripts");
         Button components = new Button("Components");
 
-        devicesPane = new StackPane();
+        devicesPane = new VBox();
         StackPane scriptsPane = new StackPane();
         StackPane componentsPane = new StackPane(); 
 
@@ -208,6 +211,20 @@ public class Structure extends GridPane {
         gpSidebar.add(scriptsPane,0,1);
         gpSidebar.add(componentsPane,0,1);
         
-        gpAppTopBar.getChildren().add(new FileMenu());
+
+        Button uploadDeviceButton = new Button("Upload Device");
+
+        uploadDeviceButton.setOnAction(new EventHandler<ActionEvent>(){
+            @Override public void handle(ActionEvent event){
+                ArrayList<ExtensionFilter> fil = new ArrayList<ExtensionFilter>();
+                File chosen = FileSystem.OpenExplorer("Select Device", mainStage, fil);
+                AddDeviceToStack(new DeviceCard("dev card","dev desc"));
+            }
+        });
+
+        HBox top = new HBox();
+        gpAppTopBar.add(top,0,0);
+        top.getChildren().add(new FileMenu());
+        top.getChildren().add(uploadDeviceButton);
     }
 }
