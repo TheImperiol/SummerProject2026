@@ -3,6 +3,7 @@ package ApplicationFX;
 import java.io.File;
 import java.util.ArrayList;
 
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
@@ -26,5 +27,28 @@ public final class FileSystem {
 
         handler.getExtensionFilters().clear();
         return returnFile;
+    }
+
+    public static File DirectoryExplorer(String title, Stage stage){
+        DirectoryChooser directoryChooser =  new DirectoryChooser();
+
+        directoryChooser.setTitle(title);
+
+        File selectedDirectory = directoryChooser.showDialog(stage);
+
+        if(selectedDirectory != null){
+            return selectedDirectory;
+        }
+        else{
+            return null;
+        }
+    }
+
+    public static void OpenProject(File project){
+        
+    }
+
+    public static void SaveProject(){
+        
     }
 }

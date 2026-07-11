@@ -38,10 +38,9 @@ public class FileMenu extends MenuButton {
                 MenuItem source = (MenuItem) event.getSource();
                 Stage currentStage = (Stage) source.getParentPopup().getOwnerWindow();
                 ArrayList<ExtensionFilter> fil = new ArrayList<ExtensionFilter>();
-                File chosenFile = FileSystem.OpenExplorer(
+                File chosenFile = FileSystem.DirectoryExplorer(
                     "Select Desired Directory",
-                     currentStage,
-                     fil);
+                     currentStage);
             
             }
         });
