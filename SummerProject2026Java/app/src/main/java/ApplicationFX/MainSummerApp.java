@@ -59,7 +59,7 @@ public class MainSummerApp extends Application{
         else{
             System.out.println("error in file system occoured");
         }*/
-            Project testJson = new Project();
+            Project testJson = new Project("C:/development/SummerProject2026/SummerProject2026Java/app/src/main/Files/TestProjLoc.json");
             FileSystem.SaveProject(testJson);
             //Gson gson = new Gson();
             //String result = gson.toJson(testJson);

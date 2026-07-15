@@ -6,13 +6,19 @@ public class Project {
     private ArrayList<String> devices = new ArrayList<String>();
     private ArrayList<String> scripts = new ArrayList<String>();
     private ArrayList<String> components = new ArrayList<String>();
+    private String path;
 
-    public Project(){}
+    public Project(String projectPath){this.path = projectPath;}
 
-    public Project(ArrayList<String> _devices, ArrayList<String> _scripts, ArrayList<String> _components){
+    public Project(ArrayList<String> _devices, ArrayList<String> _scripts, ArrayList<String> _components, String projectPath){
         this.devices = _devices;
         this.scripts = _scripts;
         this.components = _components;
+        this.path = projectPath;
+    }
+
+    public String GetPath(){
+        return path;
     }
 
     public void AddDevice(String _device){devices.add(_device);}

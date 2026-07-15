@@ -57,16 +57,11 @@ public final class FileSystem {
     public static void SaveProject(Project proj){
         //String convertedProj = ObjToJSON(proj);
         Gson gson = new Gson();
-        try(FileWriter writer = new FileWriter("C:/development/SummerProject2026/SummerProject2026Java/app/src/main/Files/TestProjLoc.json")){
+        try(FileWriter writer = new FileWriter(proj.GetPath())){
             gson.toJson(proj,writer);
         } catch(IOException e){
             System.out.print(e);
         }
-    }
-
-    private static String ObjToJSON(Object obj){
-        Gson gson = new Gson();
-        return gson.toJson(obj);
     }
 
     private static Project ConvertToProject(String json){
