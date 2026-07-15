@@ -14,6 +14,7 @@ repositories {
 
 dependencies {
     implementation 'com.google.protobuf:protobuf-java:3.25.1'
+    implementation 'com.google.code.gson:gson:2.14.0'
 }
 
 // Configure JavaFX modules and version

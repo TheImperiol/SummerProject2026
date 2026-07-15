@@ -1,39 +1,38 @@
 package ApplicationFX;
 
-import java.io.File;
 import java.util.ArrayList;
 
 public class Project {
-    private ArrayList<File> devices = new ArrayList<File>();
-    private ArrayList<File> scripts = new ArrayList<File>();
-    private ArrayList<File> components = new ArrayList<File>();
+    private ArrayList<String> devices = new ArrayList<String>();
+    private ArrayList<String> scripts = new ArrayList<String>();
+    private ArrayList<String> components = new ArrayList<String>();
 
     public Project(){}
 
-    public Project(ArrayList<File> _devices, ArrayList<File> _scripts, ArrayList<File> _components){
+    public Project(ArrayList<String> _devices, ArrayList<String> _scripts, ArrayList<String> _components){
         this.devices = _devices;
         this.scripts = _scripts;
         this.components = _components;
     }
 
-    public void AddDevice(File _device){devices.add(_device);}
-    public void RemoveDevice(File _device){devices.remove(_device);}
+    public void AddDevice(String _device){devices.add(_device);}
+    public void RemoveDevice(String _device){devices.remove(_device);}
 
-    public void AddScript(File _script){scripts.add(_script);}
-    public void RemoveScript(File _script){scripts.remove(_script);}
+    public void AddScript(String _script){scripts.add(_script);}
+    public void RemoveScript(String _script){scripts.remove(_script);}
 
-    public void AddComponent(File _component){components.add(_component);}
-    public void RemoveComponent(File _component){components.remove(_component);}
+    public void AddComponent(String _component){components.add(_component);}
+    public void RemoveComponent(String _component){components.remove(_component);}
 
-    public ArrayList<File> GetDevices(){
+    public ArrayList<String> GetDevices(){
         return this.devices;
     }
 
-    public ArrayList<File> GetScript(){
+    public ArrayList<String> GetScript(){
         return this.scripts;
     }
 
-    public ArrayList<File> GetComponents(){
+    public ArrayList<String> GetComponents(){
         return this.components;
     }
 }

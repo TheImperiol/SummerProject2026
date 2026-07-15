@@ -1,12 +1,18 @@
 package ApplicationFX;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonIOException;
 
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
+import com.google.gson.stream.JsonWriter;
 
 public final class FileSystem {
     private FileSystem(){
@@ -48,7 +54,23 @@ public final class FileSystem {
         
     }
 
-    public static void SaveProject(){
-        
+    public static void SaveProject(Project proj){
+        //String convertedProj = ObjToJSON(proj);
+        Gson gson = new Gson();
+        try(FileWriter writer = new FileWriter("C:/development/SummerProject2026/SummerProject2026Java/app/src/main/Files/TestProjLoc.json")){
+            gson.toJson(proj,writer);
+        } catch(IOException e){
+            System.out.print(e);
+        }
+    }
+
+    private static String ObjToJSON(Object obj){
+        Gson gson = new Gson();
+        return gson.toJson(obj);
+    }
+
+    private static Project ConvertToProject(String json){
+        Gson gson = new Gson();
+        return gson.fromJson(json, Project.class);
     }
 }

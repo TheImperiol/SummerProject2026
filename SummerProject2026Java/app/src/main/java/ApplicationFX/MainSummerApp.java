@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import com.google.gson.Gson;
+
 import javafx.application.*;
 import javafx.scene.control.*;
 import javafx.scene.Scene;
@@ -57,7 +59,11 @@ public class MainSummerApp extends Application{
         else{
             System.out.println("error in file system occoured");
         }*/
-        
+            Project testJson = new Project();
+            FileSystem.SaveProject(testJson);
+            //Gson gson = new Gson();
+            //String result = gson.toJson(testJson);
+            //System.out.println(result);
     }
 
     
