@@ -24,11 +24,7 @@ public class FileMenu extends MenuButton {
                 System.out.println("Opening");
                 MenuItem source = (MenuItem) event.getSource();
                 Stage currentStage = (Stage) source.getParentPopup().getOwnerWindow();
-                ArrayList<ExtensionFilter> fil = new ArrayList<ExtensionFilter>();
-                File chosenFile = FileSystem.OpenExplorer(
-                    "Open Project File",
-                     currentStage,
-                     fil);
+                FileSystem.OpenProject(currentStage);
             }
         });
 
@@ -37,17 +33,14 @@ public class FileMenu extends MenuButton {
                 System.out.println("Creating new");
                 MenuItem source = (MenuItem) event.getSource();
                 Stage currentStage = (Stage) source.getParentPopup().getOwnerWindow();
-                ArrayList<ExtensionFilter> fil = new ArrayList<ExtensionFilter>();
-                File chosenFile = FileSystem.DirectoryExplorer(
-                    "Select Desired Directory",
-                     currentStage);
-            
+                FileSystem.NewProject(currentStage);
             }
         });
 
         saveProject.setOnAction(new EventHandler<ActionEvent>(){
             @Override public void handle(ActionEvent event){
                 System.out.println("Saving");
+                FileSystem.SaveProject();
             }
         });
 

@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import com.google.gson.stream.JsonWriter;
 
 public final class FileSystem {
+    private static Project currentProject;
     private FileSystem(){
         
     }
@@ -65,16 +66,21 @@ public final class FileSystem {
                 return;
             }
             System.out.println(proj.GetPath());
+            currentProject = proj;
         } catch(Exception e){
             System.out.println(e);
         }
     }
 
-    public static void SaveProject(Project proj){
+    public static void SaveProject(){
         //String convertedProj = ObjToJSON(proj);
+        if(currentProject == null){
+            System.out.println("No open Project");
+            return;
+        }
         Gson gson = new Gson();
-        try(FileWriter writer = new FileWriter(proj.GetPath())){
-            gson.toJson(proj,writer);
+        try(FileWriter writer = new FileWriter(currentProject.GetPath())){
+            gson.toJson(currentProject,writer);
         } catch(IOException e){
             System.out.print(e);
         }
@@ -88,7 +94,9 @@ public final class FileSystem {
         ArrayList<String> _scripts = new ArrayList<String>();
         ArrayList<String> _components = new ArrayList<String>();
         Project proj = new Project(_devices, _scripts, _components, destination.getPath() + "\\Test.json");
-        SaveProject(proj);
+        currentProject = proj;
+
+        SaveProject();
     }
 
     private static Project ConvertToProject(String json){

@@ -66,7 +66,7 @@ public class MainSummerApp extends Application{
             //System.out.println(result);
 
         //FileSystem.OpenProject(stage);
-        FileSystem.NewProject(stage);
+        //FileSystem.NewProject(stage);
     }
 
     
