@@ -8,7 +8,6 @@ public class Project {
     private ArrayList<String> components = new ArrayList<String>();
     private String path;
 
-    public Project(String projectPath){this.path = projectPath;}
 
     public Project(ArrayList<String> _devices, ArrayList<String> _scripts, ArrayList<String> _components, String projectPath){
         this.devices = _devices;

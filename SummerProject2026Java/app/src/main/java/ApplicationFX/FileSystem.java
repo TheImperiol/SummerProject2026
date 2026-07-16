@@ -1,6 +1,7 @@
 package ApplicationFX;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -50,8 +51,23 @@ public final class FileSystem {
         }
     }
 
-    public static void OpenProject(File project){
-        
+    public static void OpenProject(Stage stage){
+        ArrayList<ExtensionFilter> filter = new ArrayList<ExtensionFilter>();
+        filter.add(new ExtensionFilter("Project", "*.json"));
+        File project = OpenExplorer("Select Project",stage , filter);
+
+        Gson gson = new Gson();
+
+        try(FileReader reader = new FileReader(project)){
+            Project proj = gson.fromJson(reader, Project.class);
+            if(proj == null){
+                System.out.println(proj.GetDevices());
+                return;
+            }
+            System.out.println(proj.GetPath());
+        } catch(Exception e){
+            System.out.println(e);
+        }
     }
 
     public static void SaveProject(Project proj){
@@ -62,6 +78,17 @@ public final class FileSystem {
         } catch(IOException e){
             System.out.print(e);
         }
+    }
+
+    public static void NewProject(Stage stage){
+        Gson gson = new Gson();
+        File destination = DirectoryExplorer("Select output Directory", stage);
+        System.out.println(destination.getPath());
+        ArrayList<String> _devices = new ArrayList<String>();
+        ArrayList<String> _scripts = new ArrayList<String>();
+        ArrayList<String> _components = new ArrayList<String>();
+        Project proj = new Project(_devices, _scripts, _components, destination.getPath() + "\\Test.json");
+        SaveProject(proj);
     }
 
     private static Project ConvertToProject(String json){
