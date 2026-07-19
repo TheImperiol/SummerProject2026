@@ -18,6 +18,34 @@ public class MainSummerApp extends Application{
 
     public static MainSummerApp app;
     public Structure frontend;
+
+    public void InitialiseProject(Project project){
+        frontend.devicesPane.getChildren().clear();
+        frontend.scriptsPane.getChildren().clear();
+        frontend.componentsPane.getChildren().clear();
+        Gson gson = new Gson();
+        for(String device : project.GetDevices()){
+            DeviceCard card = gson.fromJson(device,DeviceCard.class);
+            if(card != null){
+                frontend.devicesPane.getChildren().add(card);
+            }
+        }
+
+        for(String script : project.GetScript()){
+            ScriptCard card = gson.fromJson(script,ScriptCard.class);
+            if(card != null){
+                frontend.scriptsPane.getChildren().add(card);
+            }
+        }
+
+        for(String component : project.GetComponents()){
+            ComponentCard card = gson.fromJson(component,ComponentCard.class);
+            if(card != null){
+                frontend.componentsPane.getChildren().add(card);
+            }
+        }
+    }
+
     @Override
     public void start(Stage stage) throws Exception {
         VBox vBox = new VBox();

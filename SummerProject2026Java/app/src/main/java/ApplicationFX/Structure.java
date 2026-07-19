@@ -24,7 +24,9 @@ public class Structure extends GridPane {
     GridPane gpEmulator;
     EmulatorWindow emulatorWindow;
 
-    private VBox devicesPane;
+    public VBox devicesPane;
+    public VBox scriptsPane;
+    public VBox componentsPane;
 
     public void AddDeviceToStack(DeviceCard card){
         devicesPane.getChildren().add(card);
@@ -167,8 +169,8 @@ public class Structure extends GridPane {
         Button components = new Button("Components");
 
         devicesPane = new VBox();
-        StackPane scriptsPane = new StackPane();
-        StackPane componentsPane = new StackPane(); 
+        scriptsPane = new VBox();
+        componentsPane = new VBox(); 
 
 
         devices.setOnAction(new EventHandler<ActionEvent>() {
