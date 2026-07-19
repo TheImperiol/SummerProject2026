@@ -46,13 +46,35 @@ public class MainSummerApp extends Application{
         }
     }
 
+    public void UpdateProject(Project project){
+        Gson gson = new Gson();
+
+        for(Object device : frontend.devicesPane.getChildren().toArray()){
+            DeviceCard convertedDevice = (DeviceCard)device;
+            project.AddDevice(gson.toJson(convertedDevice));
+
+        }
+
+        for(Object script : frontend.scriptsPane.getChildren().toArray()){
+            ScriptCard convertedScript = (ScriptCard)script;
+            project.AddScript(gson.toJson(convertedScript));
+
+        }
+
+        for(Object component : frontend.componentsPane.getChildren().toArray()){
+            ComponentCard convertedComponent = (ComponentCard)component;
+            project.AddComponent(gson.toJson(convertedComponent));
+
+        }
+
+    }
+
     @Override
     public void start(Stage stage) throws Exception {
         VBox vBox = new VBox();
 
         Separator sep = new Separator();
         frontend = new Structure(stage);
-
 
         //ScriptCard card = new ScriptCard(0.87888888888888888f, 8.78f);
         DeviceCard devCard = new DeviceCard("Device", "desc");
@@ -65,6 +87,8 @@ public class MainSummerApp extends Application{
         //frontend.gpSidebarContent.add(devCard, 0,0);
         
         frontend.AddDeviceToStack(devCard);
+
+        UpdateProject(null);
 
         System.out.println("frontend height and width: " + frontend.getHeight() + " " + frontend.getWidth());
 

@@ -214,6 +214,8 @@ public class Structure extends GridPane {
         gpSidebar.add(componentsPane,0,1);
         
 
+        AddDeviceToStack(new DeviceCard("testing", "test 2"));
+
         Button uploadDeviceButton = new Button("Upload Device");
 
         uploadDeviceButton.setOnAction(new EventHandler<ActionEvent>(){

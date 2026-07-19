@@ -79,6 +79,7 @@ public final class FileSystem {
             return;
         }
         Gson gson = new Gson();
+        MainSummerApp.app.UpdateProject(currentProject);
         try(FileWriter writer = new FileWriter(currentProject.GetPath())){
             gson.toJson(currentProject,writer);
         } catch(IOException e){
