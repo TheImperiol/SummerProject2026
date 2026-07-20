@@ -218,6 +218,8 @@ public class Structure extends GridPane {
 
         Button uploadDeviceButton = new Button("Upload Device");
 
+        
+
         uploadDeviceButton.setOnAction(new EventHandler<ActionEvent>(){
             @Override public void handle(ActionEvent event){
                 ArrayList<ExtensionFilter> fil = new ArrayList<ExtensionFilter>();
@@ -227,7 +229,17 @@ public class Structure extends GridPane {
         });
 
         HBox top = new HBox();
+        
         gpAppTopBar.add(top,0,0);
+        Button closeDevice = new Button();
+
+        closeDevice.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent event){
+                emulatorWindow.EmptyDevice();
+            }
+        });
+
+        top.getChildren().add(closeDevice);
         top.getChildren().add(new FileMenu());
         top.getChildren().add(uploadDeviceButton);
     }

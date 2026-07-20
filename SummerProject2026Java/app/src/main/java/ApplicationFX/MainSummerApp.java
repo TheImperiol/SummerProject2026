@@ -88,7 +88,7 @@ public class MainSummerApp extends Application{
         
         frontend.AddDeviceToStack(devCard);
 
-        UpdateProject(null);
+        //UpdateProject(null);
 
         System.out.println("frontend height and width: " + frontend.getHeight() + " " + frontend.getWidth());
 
