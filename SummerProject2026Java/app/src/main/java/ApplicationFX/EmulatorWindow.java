@@ -28,12 +28,14 @@ public class EmulatorWindow extends Pane {
     private DeviceCard device;
 
     public void SetDevice(DeviceCard openedDevice){
+        MainSummerApp.app.frontend.closeDevice.setVisible(true);
         device = openedDevice;
         this.getChildren().clear();
         UpdateWindow();
     }
 
     public void EmptyDevice(){
+        MainSummerApp.app.frontend.closeDevice.setVisible(false);
         device = null;
         this.getChildren().clear();
         UpdateWindow();

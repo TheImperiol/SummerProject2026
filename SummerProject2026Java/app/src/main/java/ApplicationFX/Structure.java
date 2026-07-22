@@ -28,6 +28,8 @@ public class Structure extends GridPane {
     public VBox scriptsPane;
     public VBox componentsPane;
 
+    public Button closeDevice;
+
     public void AddDeviceToStack(DeviceCard card){
         devicesPane.getChildren().add(card);
     }
@@ -231,7 +233,9 @@ public class Structure extends GridPane {
         HBox top = new HBox();
         
         gpAppTopBar.add(top,0,0);
-        Button closeDevice = new Button();
+        closeDevice = new Button();
+
+        closeDevice.setVisible(false);
 
         closeDevice.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent event){
