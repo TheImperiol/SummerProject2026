@@ -6,9 +6,11 @@ import java.io.ObjectInputStream;
 import java.util.Base64;
 
 import ProtoMessages.CardWrapperProto.CardWrapper;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.DragEvent;
@@ -19,6 +21,7 @@ import javafx.scene.input.ScrollEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -26,16 +29,18 @@ import javafx.stage.Stage;
 public class EmulatorWindow extends Pane {
     private Point2D previousDragPos;
     private DeviceCard device;
+    public Button closeDevice;
+
 
     public void SetDevice(DeviceCard openedDevice){
-        MainSummerApp.app.frontend.closeDevice.setVisible(true);
+        closeDevice.setVisible(true);
         device = openedDevice;
         this.getChildren().clear();
         UpdateWindow();
     }
 
     public void EmptyDevice(){
-        MainSummerApp.app.frontend.closeDevice.setVisible(false);
+        closeDevice.setVisible(false);
         device = null;
         this.getChildren().clear();
         UpdateWindow();
@@ -43,7 +48,8 @@ public class EmulatorWindow extends Pane {
 
     private void UpdateWindow(){
         if(device != null){
-            // Stuff
+            this.getChildren().add(closeDevice);
+            this.getChildren().add(device);
         }
         else{
             Label placeholder = new Label("No Device currently opened");
@@ -122,6 +128,24 @@ public class EmulatorWindow extends Pane {
                 previousDragPos = new Point2D(event.getSceneX(),event.getSceneY());
             }
         });
+
+        closeDevice = new Button();
+
+        closeDevice.layoutXProperty().bind(
+            widthProperty().subtract(closeDevice.widthProperty()).subtract(10)
+        );
+
+        closeDevice.setLayoutY(10);
+
+        closeDevice.setVisible(false);
+
+        closeDevice.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent event){
+                EmptyDevice();
+            }
+        });
+
+        //top.getChildren().add(closeDevice);
 
         UpdateWindow();
 
