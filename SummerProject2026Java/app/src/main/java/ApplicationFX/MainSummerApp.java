@@ -25,23 +25,23 @@ public class MainSummerApp extends Application{
         frontend.componentsPane.getChildren().clear();
         Gson gson = new Gson();
         for(String device : project.GetDevices()){
-            DeviceCard card = gson.fromJson(device,DeviceCard.class);
-            if(card != null){
-                frontend.devicesPane.getChildren().add(card);
+            DeviceData cardData = gson.fromJson(device,DeviceData.class);
+            if(cardData != null){
+                frontend.devicesPane.getChildren().add(new DeviceCard(cardData));
             }
         }
 
         for(String script : project.GetScript()){
-            ScriptCard card = gson.fromJson(script,ScriptCard.class);
-            if(card != null){
-                frontend.scriptsPane.getChildren().add(card);
+            ScriptData cardData = gson.fromJson(script,ScriptData.class);
+            if(cardData != null){
+                frontend.scriptsPane.getChildren().add(new ScriptCard(0, 0, "path"));
             }
         }
 
         for(String component : project.GetComponents()){
-            ComponentCard card = gson.fromJson(component,ComponentCard.class);
-            if(card != null){
-                frontend.componentsPane.getChildren().add(card);
+            ComponentData cardData = gson.fromJson(component,ComponentData.class);
+            if(cardData != null){
+                frontend.componentsPane.getChildren().add(new ComponentCard(cardData));
             }
         }
     }
@@ -50,21 +50,31 @@ public class MainSummerApp extends Application{
         Gson gson = new Gson();
 
         for(Object device : frontend.devicesPane.getChildren().toArray()){
+            try{
             DeviceCard convertedDevice = (DeviceCard)device;
-            project.AddDevice(gson.toJson(convertedDevice));
-
+            project.AddDevice(gson.toJson(convertedDevice.data));
+            } catch (Exception e){
+                System.err.println();
+            }
         }
 
         for(Object script : frontend.scriptsPane.getChildren().toArray()){
+            try{
             ScriptCard convertedScript = (ScriptCard)script;
-            project.AddScript(gson.toJson(convertedScript));
+            project.AddScript(gson.toJson(convertedScript.data));
+            } catch (Exception e){
+                System.err.println();
+            }
 
         }
 
         for(Object component : frontend.componentsPane.getChildren().toArray()){
+            try{
             ComponentCard convertedComponent = (ComponentCard)component;
-            project.AddComponent(gson.toJson(convertedComponent));
-
+            project.AddComponent(gson.toJson(convertedComponent.data));
+            } catch (Exception e){
+                System.err.println();
+            }
         }
 
     }

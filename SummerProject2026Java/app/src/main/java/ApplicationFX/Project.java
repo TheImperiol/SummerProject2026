@@ -11,8 +11,8 @@ public class Project {
 
     public Project(ArrayList<String> _devices, ArrayList<String> _scripts, ArrayList<String> _components, String projectPath){
         this.devices = _devices;
-        this.scripts = _scripts;
-        this.components = _components;
+        //this.scripts = _scripts;
+        //this.components = _components;
         this.path = projectPath;
     }
 

@@ -34,7 +34,7 @@ public final class ProtoHandler {
 
     private static void ScriptHandler(ScriptCardOuterClass.ScriptCard card){
         System.out.println("Script from handler");
-        ScriptCard script = new ScriptCard(0, 0);
+        ScriptCard script = new ScriptCard(0, 0,"test path");
         Robot robot = new Robot();
         Point2D mousePos = robot.getMousePosition();
         Point2D localPos = MainSummerApp.app.frontend.emulatorWindow.screenToLocal(mousePos);
