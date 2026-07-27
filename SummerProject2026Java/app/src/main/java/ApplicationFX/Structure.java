@@ -32,6 +32,10 @@ public class Structure extends GridPane {
     public void AddDeviceToStack(DeviceCard card){
         devicesPane.getChildren().add(card);
     }
+
+    public void AddScriptToStack(ScriptCard card){
+        scriptsPane.getChildren().add(card);
+    }
     
     public Structure(Stage mainStage){
 
@@ -219,13 +223,25 @@ public class Structure extends GridPane {
 
         Button uploadDeviceButton = new Button("Upload Device");
 
-        
+        Button uploadScriptButton = new Button("Upload Script");
 
         uploadDeviceButton.setOnAction(new EventHandler<ActionEvent>(){
             @Override public void handle(ActionEvent event){
                 ArrayList<ExtensionFilter> fil = new ArrayList<ExtensionFilter>();
                 File chosen = FileSystem.OpenExplorer("Select Device", mainStage, fil);
-                AddDeviceToStack(new DeviceCard("dev card","dev desc"));
+                if(chosen != null){
+                    AddDeviceToStack(new DeviceCard("dev card","dev desc"));
+                }
+            }
+        });
+
+        uploadScriptButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent event){
+                ArrayList<ExtensionFilter> fil = new ArrayList<ExtensionFilter>();
+                File chosen = FileSystem.OpenExplorer("Select Script", mainStage, fil);
+                if(chosen != null){
+                    AddScriptToStack(new ScriptCard(0.1f,0.2f,"path"));
+                }
             }
         });
 
@@ -235,5 +251,6 @@ public class Structure extends GridPane {
        
         top.getChildren().add(new FileMenu());
         top.getChildren().add(uploadDeviceButton);
+        top.getChildren().add(uploadScriptButton);
     }
 }
