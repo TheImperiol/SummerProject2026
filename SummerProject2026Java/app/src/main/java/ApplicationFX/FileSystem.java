@@ -100,6 +100,46 @@ public final class FileSystem {
         SaveProject();
     }
 
+    public static DeviceCard OpenDevice(Stage stage){
+        ArrayList<ExtensionFilter> filter = new ArrayList<ExtensionFilter>();
+        filter.add(new ExtensionFilter("Device", "*.json"));
+        File device = OpenExplorer("Select Device",stage , filter);
+        DeviceCard result = null;
+        Gson gson = new Gson();
+
+        try(FileReader reader = new FileReader(device)){
+            DeviceData deviceData = gson.fromJson(reader, DeviceData.class);
+            if(deviceData == null){
+                System.out.println("Failed");
+                return null;
+            }
+            result = new DeviceCard(deviceData);
+        } catch(Exception e){
+            System.out.println(e);
+        }
+        return result;
+    }
+
+    public static ScriptCard OpenScript(Stage stage){
+        ArrayList<ExtensionFilter> filter = new ArrayList<ExtensionFilter>();
+        filter.add(new ExtensionFilter("Script", "*.json"));
+        File script = OpenExplorer("Select Script",stage , filter);
+        ScriptCard result = null;
+        Gson gson = new Gson();
+
+        try(FileReader reader = new FileReader(script)){
+            ScriptData scriptData = gson.fromJson(reader, ScriptData.class);
+            if(scriptData == null){
+                System.out.println("Failed");
+                return null;
+            }
+            result = new ScriptCard(scriptData);
+        } catch(Exception e){
+            System.out.println(e);
+        }
+        return result;
+    }
+
     private static Project ConvertToProject(String json){
         Gson gson = new Gson();
         return gson.fromJson(json, Project.class);

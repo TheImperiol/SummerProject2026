@@ -227,20 +227,18 @@ public class Structure extends GridPane {
 
         uploadDeviceButton.setOnAction(new EventHandler<ActionEvent>(){
             @Override public void handle(ActionEvent event){
-                ArrayList<ExtensionFilter> fil = new ArrayList<ExtensionFilter>();
-                File chosen = FileSystem.OpenExplorer("Select Device", mainStage, fil);
+                DeviceCard chosen = FileSystem.OpenDevice(mainStage);
                 if(chosen != null){
-                    AddDeviceToStack(new DeviceCard("dev card","dev desc"));
+                    AddDeviceToStack(chosen);
                 }
             }
         });
 
         uploadScriptButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent event){
-                ArrayList<ExtensionFilter> fil = new ArrayList<ExtensionFilter>();
-                File chosen = FileSystem.OpenExplorer("Select Script", mainStage, fil);
+                ScriptCard chosen = FileSystem.OpenScript(mainStage);
                 if(chosen != null){
-                    AddScriptToStack(new ScriptCard(0.1f,0.2f,"path"));
+                    AddScriptToStack(chosen);
                 }
             }
         });
