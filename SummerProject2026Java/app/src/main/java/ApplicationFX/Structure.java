@@ -206,9 +206,6 @@ public class Structure extends GridPane {
         scriptsPane.setVisible(false);
         componentsPane.setVisible(false);
 
-        //devicesPane.getChildren().add(new Label("test labelD"));
-        scriptsPane.getChildren().add(new Label("test labelS"));
-        componentsPane.getChildren().add(new Label("test labelC"));
 
 
         gpSidebarContent.add(devices,0,0);

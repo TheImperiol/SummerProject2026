@@ -21,8 +21,8 @@ public class DeviceCard extends GeneralCard {
         this.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
 
         data = _data;
-        Label titleLabel = new Label(cardTitle);
-        Label descLabel = new Label(cardDescription);
+        Label titleLabel = new Label(_data.title);
+        Label descLabel = new Label(_data.description);
         this.getChildren().addAll(titleLabel,descLabel);
         
         this.setOnMouseClicked(new EventHandler<MouseEvent>(){

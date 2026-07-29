@@ -87,7 +87,7 @@ public class MainSummerApp extends Application{
         frontend = new Structure(stage);
 
         //ScriptCard card = new ScriptCard(0.87888888888888888f, 8.78f);
-        DeviceCard devCard = new DeviceCard("Device", "desc");
+        //DeviceCard devCard = new DeviceCard("Device", "desc");
         
         
         //frontend.gpSidebarContent.add(card, 0, 0);
@@ -96,7 +96,7 @@ public class MainSummerApp extends Application{
 
         //frontend.gpSidebarContent.add(devCard, 0,0);
         
-        frontend.AddDeviceToStack(devCard);
+        //frontend.AddDeviceToStack(devCard);
 
         //UpdateProject(null);
 
