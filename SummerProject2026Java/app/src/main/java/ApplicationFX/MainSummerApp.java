@@ -88,8 +88,8 @@ public class MainSummerApp extends Application{
 
         //ScriptCard card = new ScriptCard(0.87888888888888888f, 8.78f);
         //DeviceCard devCard = new DeviceCard("Device", "desc");
-        
-        
+        ComponentCard compCard = new ComponentCard(0.1f,0.2f,"Path");
+        frontend.AddComponentToStack(compCard);
         //frontend.gpSidebarContent.add(card, 0, 0);
         vBox.getChildren().addAll(frontend,sep);
         VBox.setVgrow(frontend, Priority.ALWAYS );

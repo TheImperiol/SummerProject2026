@@ -36,6 +36,10 @@ public class Structure extends GridPane {
     public void AddScriptToStack(ScriptCard card){
         scriptsPane.getChildren().add(card);
     }
+
+    public void AddComponentToStack(ComponentCard card){
+        componentsPane.getChildren().add(card);
+    }
     
     public Structure(Stage mainStage){
 
