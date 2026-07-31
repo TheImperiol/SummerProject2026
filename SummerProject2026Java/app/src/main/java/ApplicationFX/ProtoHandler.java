@@ -44,5 +44,11 @@ public final class ProtoHandler {
 
     private static void ComponentHandler(ComponentCardOuterClass.ComponentCard card){
         System.out.println("Component from handler");
+        ComponentEmulatorCard comp = new ComponentEmulatorCard(0, 0);
+        Robot robot = new Robot();
+        Point2D mousePos = robot.getMousePosition();
+        Point2D localPos = MainSummerApp.app.frontend.emulatorWindow.screenToLocal(mousePos);
+        comp.relocate(localPos.getX(),localPos.getY());
+        MainSummerApp.app.frontend.emulatorWindow.getChildren().add(comp);
     }
 }

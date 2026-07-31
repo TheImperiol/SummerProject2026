@@ -1,5 +1,6 @@
 package ApplicationFX;
 
+import ProtoMessages.CardWrapperProto.CardWrapper;
 import javafx.event.EventHandler;
 
 import javafx.scene.control.*;
@@ -18,6 +19,7 @@ public class DeviceCard extends GeneralCard {
         }
     public DeviceCard(DeviceData _data){
         super();
+        wrapper = CardWrapper.newBuilder().setDeviceCard(ProtoMessages.DeviceCardOuterClass.DeviceCard.newBuilder().setName("Device").build()).build();
         this.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
 
         data = _data;

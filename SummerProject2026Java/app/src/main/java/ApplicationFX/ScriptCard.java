@@ -1,5 +1,6 @@
 package ApplicationFX;
 
+import ProtoMessages.CardWrapperProto.CardWrapper;
 import javafx.scene.control.*;
 
 public class ScriptCard extends DraggableCard {
@@ -9,6 +10,7 @@ public class ScriptCard extends DraggableCard {
     }
     public ScriptCard(ScriptData _data){
         super(_data.x,_data.y);
+        wrapper = CardWrapper.newBuilder().setScriptCard(ProtoMessages.ScriptCardOuterClass.ScriptCard.newBuilder().setName("Script").build()).build();
         data = _data;
         Label test = new Label(Float.toString(GetX()));
         Label test2 = new Label(Float.toString(GetY()));
