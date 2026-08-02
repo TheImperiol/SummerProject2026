@@ -118,6 +118,7 @@ public class EmulatorWindow extends Pane {
             @Override public void handle(MouseEvent event){
                 getSelf().getChildren().forEach(node -> {node.relocate(node.getLayoutX() + (event.getSceneX() - previousDragPos.getX()), node.getLayoutY() + (event.getSceneY() - previousDragPos.getY()));});
                 previousDragPos = new Point2D(event.getSceneX(),event.getSceneY());
+                event.consume();
             }
         });
 
@@ -126,6 +127,7 @@ public class EmulatorWindow extends Pane {
             @Override public void handle(MouseEvent event){
                 System.out.println("dragging: ");
                 previousDragPos = new Point2D(event.getSceneX(),event.getSceneY());
+                event.consume();
             }
         });
 
