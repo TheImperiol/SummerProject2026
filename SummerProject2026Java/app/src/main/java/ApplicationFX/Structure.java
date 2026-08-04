@@ -23,6 +23,8 @@ public class Structure extends GridPane {
     GridPane gpSidebarContent;
     GridPane gpEmulator;
     EmulatorWindow emulatorWindow;
+    
+    public Terminal terminal;
 
     public VBox devicesPane;
     public VBox scriptsPane;
@@ -252,6 +254,9 @@ public class Structure extends GridPane {
         top.getChildren().add(uploadDeviceButton);
         top.getChildren().add(uploadScriptButton);
 
-        gpEmulator.add(new Terminal(), 0,1);
+        terminal = new Terminal();
+        terminal.LogToTerminal(new TerminalCard("Testing new card"));
+
+        gpEmulator.add(terminal, 0,1);
     }
 }
