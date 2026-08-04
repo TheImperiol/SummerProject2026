@@ -251,5 +251,7 @@ public class Structure extends GridPane {
         top.getChildren().add(new FileMenu());
         top.getChildren().add(uploadDeviceButton);
         top.getChildren().add(uploadScriptButton);
+
+        gpEmulator.add(new Terminal(), 0,1);
     }
 }
