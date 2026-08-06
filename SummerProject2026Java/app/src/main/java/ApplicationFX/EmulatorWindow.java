@@ -53,6 +53,7 @@ public class EmulatorWindow extends Pane {
     private void UpdateWindow(){
         if(device != null){
             this.getChildren().add(closeDevice);
+            this.getChildren().add(new PCB());
         }
         else{
             Label placeholder = new Label("No Device currently opened");
