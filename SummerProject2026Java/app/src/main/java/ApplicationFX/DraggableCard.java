@@ -48,6 +48,10 @@ public abstract class DraggableCard extends GeneralCard implements Serializable{
 
         this.setOnDragDetected(new EventHandler<MouseEvent>() {
             @Override public void handle(MouseEvent event) {
+                if(!MainSummerApp.app.frontend.emulatorWindow.DevicePresent()){
+                   
+                    return;
+                }
                 Dragboard db = startDragAndDrop(TransferMode.ANY);
                 Clipboard clipboard = Clipboard.getSystemClipboard();
                 ClipboardContent content = new ClipboardContent();

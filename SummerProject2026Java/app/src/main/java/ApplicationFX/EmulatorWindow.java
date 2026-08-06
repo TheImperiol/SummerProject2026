@@ -39,6 +39,10 @@ public class EmulatorWindow extends Pane {
         UpdateWindow();
     }
 
+    public boolean DevicePresent(){
+        return (device != null);
+    }
+
     public void EmptyDevice(){
         closeDevice.setVisible(false);
         device = null;
@@ -49,7 +53,6 @@ public class EmulatorWindow extends Pane {
     private void UpdateWindow(){
         if(device != null){
             this.getChildren().add(closeDevice);
-            this.getChildren().add(device);
         }
         else{
             Label placeholder = new Label("No Device currently opened");
@@ -61,12 +64,8 @@ public class EmulatorWindow extends Pane {
     public EmulatorWindow(double _width, double _height){
         this.setHeight(_height);
         this.setWidth(_width);
-        //Pane PCB = new Pane();
-        //PCB.setPrefSize(200, 200);
+       
         System.out.println(_height / 2 + " " + _width/2);
-        //PCB.relocate(_height / 2, _width/2);
-        //PCB.setStyle("-fx-background-color: #0B6623");
-        //this.getChildren().add(PCB);
 
         this.setOnDragOver(new EventHandler<DragEvent>() {
             @Override public void handle(DragEvent event) {
@@ -116,8 +115,10 @@ public class EmulatorWindow extends Pane {
 
         this.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override public void handle(MouseEvent event){
+                getSelf().getChildren().remove(closeDevice);
                 getSelf().getChildren().forEach(node -> {node.relocate(node.getLayoutX() + (event.getSceneX() - previousDragPos.getX()), node.getLayoutY() + (event.getSceneY() - previousDragPos.getY()));});
                 previousDragPos = new Point2D(event.getSceneX(),event.getSceneY());
+                getSelf().getChildren().add(closeDevice);
                 event.consume();
             }
         });
@@ -146,8 +147,6 @@ public class EmulatorWindow extends Pane {
                 EmptyDevice();
             }
         });
-
-        //top.getChildren().add(closeDevice);
 
         UpdateWindow();
 
