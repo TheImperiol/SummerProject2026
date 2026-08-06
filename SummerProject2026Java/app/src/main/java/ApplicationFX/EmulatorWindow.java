@@ -30,6 +30,7 @@ public class EmulatorWindow extends Pane {
     private Point2D previousDragPos;
     private DeviceCard device;
     public Button closeDevice;
+    public PCB pcb = new PCB();
 
 
     public void SetDevice(DeviceCard openedDevice){
@@ -53,7 +54,8 @@ public class EmulatorWindow extends Pane {
     private void UpdateWindow(){
         if(device != null){
             this.getChildren().add(closeDevice);
-            this.getChildren().add(new PCB());
+            this.getChildren().add(pcb);
+            pcb.relocate(this.getWidth() / 2,this.getHeight() / 2);
         }
         else{
             Label placeholder = new Label("No Device currently opened");
@@ -66,6 +68,8 @@ public class EmulatorWindow extends Pane {
         this.setHeight(_height);
         this.setWidth(_width);
        
+        //pcb.relocate(_width / 2, _height / 2);
+
         System.out.println(_height / 2 + " " + _width/2);
 
         this.setOnDragOver(new EventHandler<DragEvent>() {
