@@ -12,6 +12,7 @@ import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
+import java.lang.Math;
 import javafx.scene.robot.Robot;
 
 public class ComponentEmulatorCard extends DraggableCard{
@@ -35,7 +36,21 @@ public class ComponentEmulatorCard extends DraggableCard{
                 Robot robot = new Robot();
                 Point2D mousePos = robot.getMousePosition();
                 Point2D localPos = MainSummerApp.app.frontend.emulatorWindow.screenToLocal(mousePos);
-                GetSelf().relocate(localPos.getX() - (GetSelf().getWidth() / 2),localPos.getY() - (GetSelf().getHeight() / 2));
+                PCB _pcb = MainSummerApp.app.frontend.emulatorWindow.pcb;
+
+                double clampedx = Math.clamp(
+                    localPos.getX() - (GetSelf().getWidth() / 2),
+                    _pcb.getLayoutX() -_pcb.getPrefWidth() ,
+                    _pcb.getLayoutX() + _pcb.getPrefWidth()
+                );
+
+                double clampedy = Math.clamp(
+                    localPos.getY() - (GetSelf().getHeight() / 2),
+                    _pcb.getLayoutY() - _pcb.getPrefHeight() ,
+                    _pcb.getLayoutY() + _pcb.getPrefHeight()
+                );
+
+                GetSelf().relocate(clampedx,clampedy);
                 event.consume();
             }
         });
