@@ -40,14 +40,14 @@ public class ComponentEmulatorCard extends DraggableCard{
 
                 double clampedx = Math.clamp(
                     localPos.getX() - (GetSelf().getWidth() / 2),
-                    _pcb.getLayoutX() -_pcb.getPrefWidth() ,
-                    _pcb.getLayoutX() + _pcb.getPrefWidth()
+                    _pcb.getLayoutX(),
+                    _pcb.getLayoutX() + (_pcb.getPrefWidth() - GetSelf().getPrefWidth()) 
                 );
 
                 double clampedy = Math.clamp(
                     localPos.getY() - (GetSelf().getHeight() / 2),
-                    _pcb.getLayoutY() - _pcb.getPrefHeight() ,
-                    _pcb.getLayoutY() + _pcb.getPrefHeight()
+                    _pcb.getLayoutY(),
+                    _pcb.getLayoutY() + (_pcb.getPrefHeight() - GetSelf().getPrefHeight())
                 );
 
                 GetSelf().relocate(clampedx,clampedy);
