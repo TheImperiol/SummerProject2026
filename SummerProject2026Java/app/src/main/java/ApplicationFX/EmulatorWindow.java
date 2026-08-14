@@ -29,9 +29,10 @@ import javafx.stage.Stage;
 public class EmulatorWindow extends Pane {
     private Point2D previousDragPos;
     private DeviceCard device;
+    private VBox overlay = new VBox();
     public Button closeDevice;
     public PCB pcb = new PCB();
-
+    public PCBSDimensions dimensions = new PCBSDimensions();
 
     public void SetDevice(DeviceCard openedDevice){
         closeDevice.setVisible(true);
@@ -53,7 +54,7 @@ public class EmulatorWindow extends Pane {
 
     private void UpdateWindow(){
         if(device != null){
-            this.getChildren().add(closeDevice);
+            this.getChildren().add(overlay);
             this.getChildren().add(pcb);
             pcb.relocate(this.getWidth() / 2,this.getHeight() / 2);
         }
@@ -120,10 +121,10 @@ public class EmulatorWindow extends Pane {
 
         this.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override public void handle(MouseEvent event){
-                getSelf().getChildren().remove(closeDevice);
+                getSelf().getChildren().remove(overlay);
                 getSelf().getChildren().forEach(node -> {node.relocate(node.getLayoutX() + (event.getSceneX() - previousDragPos.getX()), node.getLayoutY() + (event.getSceneY() - previousDragPos.getY()));});
                 previousDragPos = new Point2D(event.getSceneX(),event.getSceneY());
-                getSelf().getChildren().add(closeDevice);
+                getSelf().getChildren().add(overlay);
                 event.consume();
             }
         });
@@ -139,19 +140,22 @@ public class EmulatorWindow extends Pane {
 
         closeDevice = new Button();
 
-        closeDevice.layoutXProperty().bind(
-            widthProperty().subtract(closeDevice.widthProperty()).subtract(10)
+        overlay.layoutXProperty().bind(
+            widthProperty().subtract(closeDevice.widthProperty()).subtract(100)
         );
 
-        closeDevice.setLayoutY(10);
+        overlay.setLayoutY(10);
 
-        closeDevice.setVisible(false);
 
         closeDevice.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent event){
                 EmptyDevice();
             }
-        });
+        });      
+
+        overlay.setSpacing(10);
+
+        overlay.getChildren().addAll(closeDevice,dimensions);
 
         UpdateWindow();
 
