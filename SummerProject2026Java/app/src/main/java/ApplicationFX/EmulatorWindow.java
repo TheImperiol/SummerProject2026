@@ -9,6 +9,7 @@ import ProtoMessages.CardWrapperProto.CardWrapper;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -32,7 +33,7 @@ public class EmulatorWindow extends Pane {
     private VBox overlay = new VBox();
     public Button closeDevice;
     public PCB pcb = new PCB();
-    public PCBSDimensions dimensions = new PCBSDimensions();
+    public PCBSDimensions dimensions = new PCBSDimensions(this);
 
     public void SetDevice(DeviceCard openedDevice){
         closeDevice.setVisible(true);
@@ -114,15 +115,29 @@ public class EmulatorWindow extends Pane {
 
         this.setOnScroll(new EventHandler<ScrollEvent>(){
             @Override public void handle(ScrollEvent event){
-                getSelf().setScaleX(getSelf().getScaleY() +  (event.getDeltaY() / (Math.abs(event.getDeltaY()) * 10)));
-                getSelf().setScaleY(getSelf().getScaleY() +  (event.getDeltaY() / (Math.abs(event.getDeltaY()) * 10)));
+                //getSelf().setScaleX(getSelf().getScaleY() +  (event.getDeltaY() / (Math.abs(event.getDeltaY()) * 10)));
+                //getSelf().setScaleY(getSelf().getScaleY() +  (event.getDeltaY() / (Math.abs(event.getDeltaY()) * 10)));
+                getSelf().getChildren().remove(overlay);
+
+                for (Node child : getSelf().getChildren()){
+                    child.setScaleX(Math.clamp(child.getScaleY() +  (event.getDeltaY() / (Math.abs(event.getDeltaY()) * 10)),0,999));
+                    child.setScaleY(Math.clamp(child.getScaleY() +  (event.getDeltaY() / (Math.abs(event.getDeltaY()) * 10)),0,999));
+                }
+                getSelf().getChildren().add(overlay);
+
+                event.consume();
             }
         });
 
         this.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override public void handle(MouseEvent event){
                 getSelf().getChildren().remove(overlay);
-                getSelf().getChildren().forEach(node -> {node.relocate(node.getLayoutX() + (event.getSceneX() - previousDragPos.getX()), node.getLayoutY() + (event.getSceneY() - previousDragPos.getY()));});
+                getSelf().getChildren().forEach(node -> {
+                    node.relocate(
+                        node.getLayoutX() + (event.getSceneX() - previousDragPos.getX()),
+                         node.getLayoutY() + (event.getSceneY() - previousDragPos.getY())
+                        );
+                    });
                 previousDragPos = new Point2D(event.getSceneX(),event.getSceneY());
                 getSelf().getChildren().add(overlay);
                 event.consume();
