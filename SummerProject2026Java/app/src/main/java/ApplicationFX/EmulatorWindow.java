@@ -24,6 +24,7 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -67,9 +68,15 @@ public class EmulatorWindow extends Pane {
     }
 
     public EmulatorWindow(double _width, double _height){
+        this.toBack();
         this.setHeight(_height);
         this.setWidth(_width);
-       
+       Rectangle clip = new Rectangle();
+
+        clip.widthProperty().bind(widthProperty());
+        clip.heightProperty().bind(heightProperty());
+
+        setClip(clip);
         //pcb.relocate(_width / 2, _height / 2);
 
         System.out.println(_height / 2 + " " + _width/2);
@@ -131,15 +138,21 @@ public class EmulatorWindow extends Pane {
 
         this.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override public void handle(MouseEvent event){
-                getSelf().getChildren().remove(overlay);
-                getSelf().getChildren().forEach(node -> {
-                    node.relocate(
-                        node.getLayoutX() + (event.getSceneX() - previousDragPos.getX()),
-                         node.getLayoutY() + (event.getSceneY() - previousDragPos.getY())
-                        );
-                    });
-                previousDragPos = new Point2D(event.getSceneX(),event.getSceneY());
-                getSelf().getChildren().add(overlay);
+                if (pcb != null) {
+                    double dx = event.getSceneX() - previousDragPos.getX();
+                    double dy = event.getSceneY() - previousDragPos.getY();
+
+                    pcb.relocate(
+                        pcb.getLayoutX() + dx,
+                        pcb.getLayoutY() + dy
+                    );
+                }
+
+                previousDragPos = new Point2D(
+                    event.getSceneX(),
+                    event.getSceneY()
+                );
+
                 event.consume();
             }
         });

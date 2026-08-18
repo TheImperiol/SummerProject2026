@@ -152,6 +152,7 @@ public class Structure extends GridPane {
         gpSidebar.getRowConstraints().addAll(sidebarRowTabs,sidebarRowContent);
         gpSidebar.add(gpSidebarContent,0,0);
 
+
         gpMain.add(gpSidebar,0,0);
         gpMain.add(gpEmulator, 1, 0);
 
@@ -179,7 +180,9 @@ public class Structure extends GridPane {
         Button scripts = new Button("Scripts");
         Button components = new Button("Components");
 
+
         devicesPane = new VBox();
+        devicesPane.toFront();
         scriptsPane = new VBox();
         componentsPane = new VBox(); 
 
@@ -247,6 +250,8 @@ public class Structure extends GridPane {
         });
 
         HBox top = new HBox();
+        
+        top.toFront();
         
         gpAppTopBar.add(top,0,0);
        

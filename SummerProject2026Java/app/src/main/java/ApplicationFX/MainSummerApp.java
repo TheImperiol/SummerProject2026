@@ -8,6 +8,8 @@ import com.google.gson.Gson;
 
 import javafx.application.*;
 import javafx.scene.control.*;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
@@ -18,6 +20,19 @@ public class MainSummerApp extends Application{
 
     public static MainSummerApp app;
     public Structure frontend;
+
+    private static void printSceneGraph(Node node, int depth) {
+    System.out.println("  ".repeat(depth)
+            + node.getClass().getSimpleName()
+            + " id=" + node.getId()
+            + " styleClass=" + node.getStyleClass());
+
+    if (node instanceof Parent parent) {
+        for (Node child : parent.getChildrenUnmodifiable()) {
+            printSceneGraph(child, depth + 1);
+        }
+    }
+}
 
     public void InitialiseProject(Project project){
         frontend.devicesPane.getChildren().clear();
@@ -129,6 +144,8 @@ public class MainSummerApp extends Application{
 
         //FileSystem.OpenProject(stage);
         //FileSystem.NewProject(stage);
+
+        printSceneGraph(mainScene.getRoot(), 0);
     }
 
     
