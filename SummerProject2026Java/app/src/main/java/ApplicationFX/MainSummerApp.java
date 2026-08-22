@@ -21,6 +21,12 @@ public class MainSummerApp extends Application{
     public static MainSummerApp app;
     public Structure frontend;
 
+    private boolean drawingMode = false;
+
+    public boolean GetDrawingMode(){return drawingMode;}
+
+    public void ToggleDrawingMode(){ drawingMode = (!drawingMode);}
+
     private static void printSceneGraph(Node node, int depth) {
     System.out.println("  ".repeat(depth)
             + node.getClass().getSimpleName()

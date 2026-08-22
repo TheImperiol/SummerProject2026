@@ -167,6 +167,13 @@ public class EmulatorWindow extends Pane {
         });
 
         closeDevice = new Button();
+        Button drawTrack = new Button();
+
+        drawTrack.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent event){
+                MainSummerApp.app.ToggleDrawingMode();
+            }
+        });
 
         overlay.layoutXProperty().bind(
             widthProperty().subtract(closeDevice.widthProperty()).subtract(100)
@@ -183,7 +190,7 @@ public class EmulatorWindow extends Pane {
 
         overlay.setSpacing(10);
 
-        overlay.getChildren().addAll(closeDevice,dimensions);
+        overlay.getChildren().addAll(closeDevice,drawTrack,dimensions);
 
         UpdateWindow();
 
