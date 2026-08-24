@@ -18,9 +18,9 @@ public class PCB extends Pane{
 
     private PCB getSelf(){return this;}
 
-    private ArrayList<Line> tracks = new ArrayList<Line>();
+    private ArrayList<Track> tracks = new ArrayList<Track>();
 
-    private Line currentTrack;
+    private Track currentTrack;
 
     public PCB (){
         this.setStyle("-fx-background-color: #347d1c");
@@ -40,19 +40,20 @@ public class PCB extends Pane{
         this.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override public void handle(MouseEvent event){
                 if(MainSummerApp.app.GetDrawingMode() == true){
+                    double endX = Math.clamp(event.getX(), 0,getSelf().getPrefWidth());
+                    double endY = Math.clamp(event.getY(), 0, getSelf().getPrefHeight());
                     if(currentTrack == null){
-                        currentTrack = new Line(
+                        currentTrack = new Track(
                             drawnTrackStart[0],
                             drawnTrackStart[1],
-                            event.getX(),
-                            event.getY()
+                            endX,
+                            endY
                         );
                         getSelf().getChildren().add(currentTrack);
 
                     }
                     else{
-                        currentTrack.setEndX(event.getX());
-                        currentTrack.setEndY(event.getY());
+                        currentTrack.UpdateEndPoint(endX, endY);
                     }
                 }
                 event.consume();
