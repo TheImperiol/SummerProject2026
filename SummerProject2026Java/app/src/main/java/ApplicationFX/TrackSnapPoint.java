@@ -9,11 +9,14 @@ public class TrackSnapPoint extends Circle{
 
     private Circle getSelf(){return this;}
 
-    public TrackSnapPoint(){
+    protected Track owningTrack;
+
+    public TrackSnapPoint(Track owner){
         super();
         this.setFill(Color.RED);
         this.setOpacity(0);
         setRadius(5);
+        owningTrack = owner;
 
         this.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override public void handle(MouseEvent event){
@@ -28,6 +31,15 @@ public class TrackSnapPoint extends Circle{
                 if(MainSummerApp.app.GetDrawingMode() == true){
                     getSelf().setOpacity(0);
                 }
+            }
+        });
+
+        this.setOnMousePressed(new EventHandler<MouseEvent>(){
+            @Override public void handle(MouseEvent event){
+                if(MainSummerApp.app.GetDrawingMode()){
+                    owningTrack.owningPCB.setTrackStart(getSelf().getCenterX(), getSelf().getCenterY());
+                }
+                event.consume();
             }
         });
     }
