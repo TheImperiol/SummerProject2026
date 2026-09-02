@@ -95,7 +95,6 @@ public class EmulatorWindow extends Pane {
 
         this.setOnDragDropped(new EventHandler<DragEvent>() {
             @Override public void handle(DragEvent event) {
-                Dragboard db = event.getDragboard();
                 Clipboard clipboard = Clipboard.getSystemClipboard();
                 boolean success = false;
                 if( clipboard.hasString()){
@@ -138,7 +137,7 @@ public class EmulatorWindow extends Pane {
 
         this.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override public void handle(MouseEvent event){
-                if (pcb != null) {
+                if (pcb != null && previousDragPos != null && MainSummerApp.app.GetDrawingMode() == false) {
                     double dx = event.getSceneX() - previousDragPos.getX();
                     double dy = event.getSceneY() - previousDragPos.getY();
 

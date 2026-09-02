@@ -27,18 +27,7 @@ public class MainSummerApp extends Application{
 
     public void ToggleDrawingMode(){ drawingMode = (!drawingMode);}
 
-    private static void printSceneGraph(Node node, int depth) {
-    System.out.println("  ".repeat(depth)
-            + node.getClass().getSimpleName()
-            + " id=" + node.getId()
-            + " styleClass=" + node.getStyleClass());
-
-    if (node instanceof Parent parent) {
-        for (Node child : parent.getChildrenUnmodifiable()) {
-            printSceneGraph(child, depth + 1);
-        }
-    }
-}
+    
 
     public void InitialiseProject(Project project){
         frontend.devicesPane.getChildren().clear();
@@ -151,7 +140,7 @@ public class MainSummerApp extends Application{
         //FileSystem.OpenProject(stage);
         //FileSystem.NewProject(stage);
 
-        printSceneGraph(mainScene.getRoot(), 0);
+      
     }
 
     
