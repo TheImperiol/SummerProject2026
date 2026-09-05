@@ -3,10 +3,8 @@ package ApplicationFX;
 import java.util.ArrayList;
 
 import javafx.event.EventHandler;
-import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.shape.Line;
 
 public class PCB extends Pane{
 
@@ -36,12 +34,15 @@ public class PCB extends Pane{
                 event.consume();
             }
         });
+        
+        this.setOnDragDetected(event ->{startFullDrag(); event.consume();});
 
         this.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override public void handle(MouseEvent event){
                 if(MainSummerApp.app.GetDrawingMode() == true){
                     double endX = Math.clamp(event.getX(), 0,getSelf().getPrefWidth());
                     double endY = Math.clamp(event.getY(), 0, getSelf().getPrefHeight());
+                    
                     if(currentTrack == null){
                         
                         currentTrack = new Track(
@@ -58,7 +59,7 @@ public class PCB extends Pane{
                         currentTrack.UpdateEndPoint(endX, endY);
                     }
                 }
-                event.consume();
+                //event.consume();
             }
         });
 

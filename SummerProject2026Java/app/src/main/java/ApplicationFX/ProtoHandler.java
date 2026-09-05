@@ -2,11 +2,7 @@ package ApplicationFX;
 
 import ProtoMessages.*;
 import ProtoMessages.CardWrapperProto.*;
-import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
-import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.robot.Robot;
 
 public final class ProtoHandler {
@@ -24,6 +20,8 @@ public final class ProtoHandler {
                 break;
             case COMPONENTCARD:
                 ComponentHandler(wrapper.getComponentCard());
+                break;
+            default:
                 break;
         }
     }

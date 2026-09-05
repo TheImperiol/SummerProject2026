@@ -6,7 +6,6 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Base64;
-import java.util.List;
 
 import javafx.event.EventHandler;
 import javafx.scene.control.Control;
@@ -53,7 +52,6 @@ public abstract class DraggableCard extends GeneralCard implements Serializable{
                     return;
                 }
                 Dragboard db = startDragAndDrop(TransferMode.ANY);
-                Clipboard clipboard = Clipboard.getSystemClipboard();
                 ClipboardContent content = new ClipboardContent();
 
                 try(ByteArrayOutputStream bytStream = new ByteArrayOutputStream();

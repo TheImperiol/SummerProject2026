@@ -7,13 +7,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonIOException;
 
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
-import com.google.gson.stream.JsonWriter;
 
 public final class FileSystem {
     private static Project currentProject;
@@ -88,7 +86,6 @@ public final class FileSystem {
     }
 
     public static void NewProject(Stage stage){
-        Gson gson = new Gson();
         File destination = DirectoryExplorer("Select output Directory", stage);
         System.out.println(destination.getPath());
         ArrayList<String> _devices = new ArrayList<String>();
@@ -138,10 +135,5 @@ public final class FileSystem {
             System.out.println(e);
         }
         return result;
-    }
-
-    private static Project ConvertToProject(String json){
-        Gson gson = new Gson();
-        return gson.fromJson(json, Project.class);
     }
 }

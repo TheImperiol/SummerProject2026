@@ -1,7 +1,6 @@
 package ApplicationFX;
 
 import javafx.event.EventHandler;
-import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
@@ -25,25 +24,28 @@ public class TrackSnapPoint extends Circle{
                 if(MainSummerApp.app.GetDrawingMode() == true){
                 getSelf().setOpacity(0.5);
             }
+            event.consume();
         }
         });
 
-        this.setOnMouseDragOver(new EventHandler<MouseDragEvent>() {
+        this.setOnMouseDragEntered(new EventHandler<MouseDragEvent>() {
              @Override public void handle(MouseDragEvent event){
                 System.out.println("dragged over snap");
                 if(MainSummerApp.app.GetDrawingMode() == true){
                     System.out.println("drawing true");
                     getSelf().setFill(Color.BLUE);
                     getSelf().setOpacity(0.5);
+                }
             }
-        }
-    });
+        });
 
         this.setOnMouseExited(new EventHandler<MouseEvent>() {
             @Override public void handle(MouseEvent event){
                 if(MainSummerApp.app.GetDrawingMode() == true){
                     getSelf().setOpacity(0);
                 }
+                event.consume();
+
             }
         });
 

@@ -1,20 +1,9 @@
 package ApplicationFX;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.Base64;
-
-import ProtoMessages.CardWrapperProto.CardWrapper;
 import javafx.event.*;
-import javafx.geometry.Insets;
-import javafx.scene.input.*;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
-import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 public class Structure extends GridPane {
     GridPane gpAppTopBar;
@@ -231,6 +220,8 @@ public class Structure extends GridPane {
 
         Button uploadScriptButton = new Button("Upload Script");
 
+        Button closeAppButton = new Button("X");
+
         uploadDeviceButton.setOnAction(new EventHandler<ActionEvent>(){
             @Override public void handle(ActionEvent event){
                 DeviceCard chosen = FileSystem.OpenDevice(mainStage);
@@ -249,6 +240,12 @@ public class Structure extends GridPane {
             }
         });
 
+        closeAppButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent event){
+                MainSummerApp.app.CloseApp();
+            }
+        });
+
         HBox top = new HBox();
         
         top.toFront();
@@ -258,6 +255,7 @@ public class Structure extends GridPane {
         top.getChildren().add(new FileMenu());
         top.getChildren().add(uploadDeviceButton);
         top.getChildren().add(uploadScriptButton);
+        top.getChildren().add(closeAppButton);
 
         terminal = new Terminal();
         terminal.LogToTerminal(new TerminalCard("Testing new card"));

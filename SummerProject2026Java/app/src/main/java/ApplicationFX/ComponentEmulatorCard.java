@@ -1,17 +1,10 @@
 package ApplicationFX;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.util.Base64;
+
 
 import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
-import javafx.scene.input.Clipboard;
-import javafx.scene.input.ClipboardContent;
-import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.input.TransferMode;
 import java.lang.Math;
 import javafx.scene.robot.Robot;
 

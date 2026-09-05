@@ -1,20 +1,13 @@
 package ApplicationFX;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import com.google.gson.Gson;
 
 import javafx.application.*;
 import javafx.scene.control.*;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import javafx.stage.FileChooser;
-import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 public class MainSummerApp extends Application{
 
@@ -143,6 +136,9 @@ public class MainSummerApp extends Application{
       
     }
 
+    public void CloseApp(){
+        Platform.exit();
+    }
     
 
     public static void main(String[] args) {
